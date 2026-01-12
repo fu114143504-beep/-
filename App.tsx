@@ -1,24 +1,14 @@
 
 import React, { useState, useEffect, useRef } from 'react';
-import { AppView, Language, FamilyMember, MultiLangText } from './types';
+import { AppView, Language, FamilyMember } from './types';
 import { FAMILY_MEMBERS, STORIES, CRISES, DAILY_PHRASES, PROVERBS, HOME_CONTENT } from './constants';
 import Navigation from './components/Navigation';
-import { explainNuance, chatWithTutor } from './services/geminiService';
 
 const App: React.FC = () => {
   const [view, setView] = useState<AppView>('home');
   const [lang, setLang] = useState<Language>('zh-tw');
-  const [searchPhrase, setSearchPhrase] = useState('');
-  const [aiExplanation, setAiExplanation] = useState<string | null>(null);
-  const [isExplaining, setIsExplaining] = useState(false);
   const [selectedMember, setSelectedMember] = useState<FamilyMember | null>(null);
   const mainRef = useRef<HTMLElement>(null);
-  
-  const [tutorMessage, setTutorMessage] = useState('');
-  const [isTutorLoading, setIsTutorLoading] = useState(false);
-  const [chatLog, setChatLog] = useState<{ role: 'user' | 'ai', content: string }[]>([
-    { role: 'ai', content: '您好。我是您的語境導師。我可以用六種語言協助您理解中文。' }
-  ]);
 
   // Ensure content scrolls to top when view changes
   useEffect(() => {
@@ -26,41 +16,6 @@ const App: React.FC = () => {
       mainRef.current.scrollTo(0, 0);
     }
   }, [view]);
-
-  const handleExplain = async () => {
-    if (!searchPhrase || isExplaining) return;
-    setIsExplaining(true);
-    setAiExplanation(null);
-    try {
-      const result = await explainNuance(searchPhrase, lang);
-      setAiExplanation(result || null);
-    } catch (error) {
-      setAiExplanation("分析失敗，請檢查網路。");
-    } finally {
-      setIsExplaining(false);
-    }
-  };
-
-  const handleSendToTutor = async () => {
-    if (!tutorMessage.trim() || isTutorLoading) return;
-    
-    setIsTutorLoading(true);
-    const userMsg = tutorMessage;
-    const historyBeforeCurrent = [...chatLog];
-    
-    // Update log immediately for UI feedback
-    setChatLog(prev => [...prev, { role: 'user', content: userMsg }]);
-    setTutorMessage('');
-    
-    try {
-      const response = await chatWithTutor(historyBeforeCurrent, userMsg, lang);
-      setChatLog(prev => [...prev, { role: 'ai', content: response || "導師無回應。" }]);
-    } catch (error) {
-      setChatLog(prev => [...prev, { role: 'ai', content: "導師正在休息。" }]);
-    } finally {
-      setIsTutorLoading(false);
-    }
-  };
 
   const renderLanguageSwitcher = () => (
     <div className="fixed top-4 right-4 z-[60] flex flex-wrap gap-1 bg-white/90 backdrop-blur p-1.5 rounded-2xl shadow-xl border border-[#d4af37] max-w-[280px] md:max-w-none">
@@ -123,7 +78,6 @@ const App: React.FC = () => {
               <p className="text-slate-500 mt-4 text-sm uppercase tracking-widest font-bold">Interactive Trees • Bloodline Trunk • Side Branches</p>
             </div>
 
-            {/* Families Trees List */}
             {['Jia', 'Lin', 'Xue', 'Shi', 'Other'].map(familyName => {
               const members = FAMILY_MEMBERS.filter(m => m.family === familyName);
               if (members.length === 0) return null;
@@ -143,7 +97,6 @@ const App: React.FC = () => {
                       const genMembers = members.filter(m => m.generation === gen);
                       if (genMembers.length === 0) return null;
 
-                      // Bloodline in center, Spouses/Servants on sides
                       const bloodline = genMembers.filter(m => m.role === 'blood');
                       const others = genMembers.filter(m => m.role !== 'blood');
 
@@ -307,96 +260,6 @@ const App: React.FC = () => {
                   </div>
                 </div>
               ))}
-            </div>
-          </div>
-        )}
-
-        {view === 'analyzer' && (
-          <div className="max-w-3xl mx-auto space-y-8 animate-in slide-in-from-bottom-5 pb-24">
-            <div className="text-center">
-               <h2 className="text-3xl font-black mb-2">
-                 {lang === 'vn' ? 'Phân tích ngữ cảnh' : '語境分析器'}
-               </h2>
-               <p className="text-slate-500">
-                 {lang === 'vn' ? 'Nhập câu tiếng Trung bạn muốn phân tích' : '輸入你想分析的中文句子'}
-               </p>
-            </div>
-            <div className="bg-white p-8 rounded-3xl shadow-xl border border-slate-100">
-              <textarea 
-                value={searchPhrase}
-                onChange={(e) => setSearchPhrase(e.target.value)}
-                placeholder={lang === 'zh-tw' ? "例如：下次再約、我看不太方便..." : "e.g., Maybe next time..."}
-                className="w-full p-6 rounded-2xl border-2 border-slate-100 focus:border-[#8b0000] focus:ring-0 outline-none h-40 text-xl font-serif"
-              />
-              <button 
-                onClick={handleExplain}
-                disabled={isExplaining || !searchPhrase}
-                className="w-full mt-4 bg-[#8b0000] text-white py-4 rounded-xl font-bold hover:bg-red-800 transition-all disabled:bg-slate-300"
-              >
-                {isExplaining ? '分析中...' : '開始分析'}
-              </button>
-            </div>
-            {aiExplanation && (
-              <div className="bg-white p-8 rounded-3xl shadow-lg border-t-8 border-[#d4af37] animate-in slide-in-from-bottom-10">
-                <div className="prose prose-slate max-w-none whitespace-pre-wrap">
-                  {aiExplanation}
-                </div>
-              </div>
-            )}
-          </div>
-        )}
-
-        {view === 'ai-tutor' && (
-          <div className="h-[calc(100vh-250px)] flex flex-col bg-white rounded-3xl shadow-xl border border-slate-200 overflow-hidden animate-in fade-in duration-500">
-            <div className="p-6 border-b border-slate-100 bg-[#fdfbf7] flex items-center gap-4">
-              <div className="w-12 h-12 bg-[#8b0000] rounded-xl flex items-center justify-center text-2xl text-white">👨‍🏫</div>
-              <div>
-                <h3 className="font-black text-slate-800">
-                  {lang === 'vn' ? 'Gia sư Đại Quan Viên' : '大觀園導師'}
-                </h3>
-                <p className="text-[10px] uppercase font-bold text-slate-400">當前語言: {lang.toUpperCase()}</p>
-              </div>
-            </div>
-            <div className="flex-1 p-6 overflow-y-auto space-y-6 bg-slate-50/30">
-              {chatLog.map((msg, i) => (
-                <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                  <div className={`max-w-[85%] p-5 rounded-2xl ${
-                    msg.role === 'user' ? 'bg-[#8b0000] text-white rounded-tr-none' : 'bg-white border border-slate-200 rounded-tl-none shadow-sm'
-                  }`}>
-                    <p className="text-sm leading-loose whitespace-pre-wrap">{msg.content}</p>
-                  </div>
-                </div>
-              ))}
-              {isTutorLoading && (
-                <div className="flex justify-start">
-                  <div className="max-w-[85%] p-5 rounded-2xl bg-white border border-slate-200 rounded-tl-none shadow-sm italic text-slate-400 animate-pulse text-xs">
-                    正在回覆中...
-                  </div>
-                </div>
-              )}
-            </div>
-            <div className="p-6 bg-white border-t border-slate-100 flex gap-3">
-              <input 
-                type="text" 
-                value={tutorMessage}
-                onChange={(e) => setTutorMessage(e.target.value)}
-                onKeyDown={(e) => {
-                  // Important: Prevent double trigger with IME (Composition)
-                  if (e.key === 'Enter' && !e.nativeEvent.isComposing) {
-                    handleSendToTutor();
-                  }
-                }}
-                disabled={isTutorLoading}
-                className="flex-1 p-4 rounded-xl bg-slate-100 border-none outline-none font-serif disabled:opacity-50"
-                placeholder={lang === 'zh-tw' ? "問點什麼吧..." : "Ask something..."}
-              />
-              <button 
-                onClick={handleSendToTutor} 
-                disabled={isTutorLoading || !tutorMessage.trim()}
-                className="bg-[#8b0000] text-white w-12 h-12 rounded-xl flex items-center justify-center shadow-lg disabled:bg-slate-300"
-              >
-                {isTutorLoading ? '...' : '➔'}
-              </button>
             </div>
           </div>
         )}

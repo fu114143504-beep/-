@@ -17,8 +17,6 @@ const Navigation: React.FC<NavigationProps> = ({ currentView, setView, lang }) =
     { id: 'crisis', icon: '⚖️' },
     { id: 'proverbs', icon: '💡' },
     { id: 'daily', icon: '💬' },
-    { id: 'analyzer', icon: '🔍' },
-    { id: 'ai-tutor', icon: '👨‍🏫' },
   ];
 
   return (

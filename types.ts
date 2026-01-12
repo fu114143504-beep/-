@@ -7,9 +7,7 @@ export type AppView =
   | 'stories' 
   | 'crisis' 
   | 'proverbs' 
-  | 'daily' 
-  | 'analyzer' 
-  | 'ai-tutor';
+  | 'daily';
 
 export interface MultiLangText {
   en: string;
