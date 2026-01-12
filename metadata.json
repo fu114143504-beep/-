@@ -1,0 +1,7 @@
+{
+  "name": "紅樓夢跨文化教材",
+  "description": "An interactive digital educational platform designed to help non-native speakers master high-context Chinese communication and the 'hidden meanings' behind everyday phrases.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
