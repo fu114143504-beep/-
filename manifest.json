@@ -1,0 +1,22 @@
+
+{
+  "name": "紅樓語境教室 - ZenContext Lab",
+  "short_name": "紅樓語境",
+  "description": "Mastering high-context Chinese communication through the lens of Red Chamber Dream.",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fcf9f2",
+  "theme_color": "#8b0000",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/1149/1149168.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/1149/1149168.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
