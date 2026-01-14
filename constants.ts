@@ -11,24 +11,45 @@ export const NAV_LABELS: Record<string, MultiLangText> = {
 };
 
 export const HOME_CONTENT = {
-  title: { en: 'ZenContext Lab', vn: 'Lớp học Hồng Lâu', jp: '紅楼語境教室', kr: '홍루몽 언어 교실', 'zh-tw': '紅樓語境教室', 'zh-cn': '紅樓語境教室' },
-  subtitle: { en: 'Mastering the Unsaid: Cultural Wisdom from the Red Chamber.', vn: 'Làm chủ lời chưa nói: Trí tuệ văn hóa từ Hồng Lâu Mộng.', jp: '言葉にされない知恵：紅楼夢の文化的洞察。', kr: '말하지 않은 지혜: 홍루몽의 문화적 통찰.', 'zh-tw': '掌握「話外之音」：紅樓夢帶給你的跨文化智慧。', 'zh-cn': '掌握「話外之音」：紅樓夢帶給你的跨文化智慧。' },
+  title: { 
+    en: 'Welcome to the Learning World', 
+    vn: 'Chào mừng đến với Thế giới Học tập', 
+    jp: '学習の世界へようこそ', 
+    kr: '배움의 세계에 오신 것을 환영합니다', 
+    'zh-tw': '歡迎來到學習天地', 
+    'zh-cn': '欢迎来到学习天地' 
+  },
+  subtitle: { 
+    en: 'Learn Cross-Cultural Communication, master the wisdom behind words.', 
+    vn: 'Học giao tiếp liên văn hóa, nắm vững trí tuệ đằng sau những lời nói.', 
+    jp: '異文化コミュニケーションを学び、言葉の裏にある知恵をマスターしましょう。', 
+    kr: '상호문화 소통을 배우고, 말 뒤에 숨겨진 지혜를 터득하세요.', 
+    'zh-tw': '學習跨文化溝通，掌握話語背後的智慧。', 
+    'zh-cn': '学习跨文化沟通，掌握话语背后的智慧。' 
+  },
   tipTitle: { en: '💡 Learning Tips', vn: '💡 Mẹo học tập', jp: '💡 学習のコツ', kr: '💡 학습 팁', 'zh-tw': '💡 學習小撇步', 'zh-cn': '💡 學習小撇步' },
   tipDesc: { en: 'Explore different modules in the sidebar. Switch languages anytime to compare.', vn: 'Khám phá các mô-đun ở thanh bên. Đổi ngôn ngữ bất cứ lúc nào để so sánh.', jp: 'サイドバーの各モジュールを探索してください。いつでも言語を切り替えて比較できます。', kr: '사이드바의 다양한 모듈을 탐색하세요. 언제든 ngôn ngữ을 전환하여 비교할 수 있습니다.', 'zh-tw': '利用側邊欄探索不同模組，您可以隨時切換語言來對比解釋。', 'zh-cn': '利用侧边栏探索不同模组，您可以随时切换语言来对比解释。' },
-  significanceTitle: { en: 'Why "Red Chamber" for Learners?', vn: 'Vì sao SV Việt Nam cần học Hồng Lâu Mộng?', jp: 'なぜ紅楼夢なのか？', kr: '왜 홍루몽인가요?', 'zh-tw': '為什麼除了日常生活，更要了解紅樓夢？', 'zh-cn': '為什麼除了日常生活，更要了解紅樓夢？' },
+  significanceTitle: { 
+    en: 'Why is Cross-Cultural Communication Important?', 
+    vn: 'Tại sao giao tiếp liên văn hóa lại quan trọng?', 
+    jp: 'なぜ異文化コミュニケーションが重要なのですか？', 
+    kr: '왜 상호문화 소통이 중요한가요?', 
+    'zh-tw': '為什麼跨文化溝通很重要？', 
+    'zh-cn': '为什么跨文化沟通很重要？' 
+  },
   significanceDesc: { 
-    en: 'Daily phrases teach you "how" to speak, but Red Chamber teaches you "why" people react the way they do. The power dynamics in the Jia Mansion are the ultimate high-context simulation. Understanding this ancient masterpiece helps you decode modern social codes in professional and family life across East Asian cultures.',
-    vn: 'Giao tiếp hàng ngày dạy bạn "cách" nói, nhưng Hồng Lâu Mộng dạy bạn "tại sao" mọi người lại phản ứng như vậy. Việt Nam và Trung Quốc chia sẻ chung cội nguồn Nho giáo; những động lực quyền lực trong Giả phủ là mô phỏng đỉnh cao về văn hóa ngữ cảnh cao. Hiểu tác phẩm này giúp bạn giải mã các quy tắc xã hội hiện đại.',
-    jp: '日常会話は「話し方」を教えますが、紅楼夢は「なぜ」人々がそのように反応するのかを教えます。ジャ家の権力構造は究極のハイコンテクスト・シミュレーションです。この古典を理解することは、現代の社会コードを解読する鍵となります。',
-    kr: '일상 대화는 "말하는 법"을 가르치지만, 홍루몽은 사람들이 "왜" 그렇게 반응하는지를 가르칩니다. 가문의 권력 역학 관계는 고맥락 문화의 정점을 보여줍니다. 이 고전을 이해하는 것은 현대 사회의 코드를 해독하는 데 큰 도움이 됩니다.',
-    'zh-tw': '日常生活對話教你「怎麼說」，但紅樓夢教你「為什麼」人們會這樣反應。賈府裡的權力運作是高語境溝通的終極模擬。了解這部名著，能幫助你解讀現代職場與家庭中的社交密碼，讓你的學習更有深度與現實意義。',
-    'zh-cn': '日常生活对话教你「怎么说」，但红楼梦教你「为什么」人们会这样反应。贾府里的权力运作是高语境沟通的终极模拟。了解这部名著，能帮助你解读现代职场与家庭中的社交密码，让你的学习更有深度与现实意义。'
+    en: 'Communication is not just about words; it’s about understanding hearts. In different cultures, the same words can mean different things. Learning cross-cultural communication helps us avoid misunderstandings and build stronger bonds. Through the stories of the Red Chamber, we uncover ancient wisdom to decode the "unsaid" in modern life.',
+    vn: 'Giao tiếp không chỉ là ngôn từ; đó là sự thấu hiểu con tim. Trong các nền văn hóa khác nhau, cùng một lời nói có thể mang ý nghĩa khác nhau. Học giao tiếp liên văn hóa giúp chúng ta tránh được những hiểu lầm và xây dựng các mối quan hệ bền chặt hơn. Qua những câu chuyện trong Hồng Lâu Mộng, chúng ta khám phá trí tuệ cổ xưa để giải mã những "lời chưa nói" trong cuộc sống hiện đại.',
+    jp: 'コミュニケーションは単なる言葉のやり取りではなく、心を通わせることです。文化が違えば、同じ言葉でも意味が異なることがあります。異文化コミュニケーションを学ぶことで、誤解を避け、より強い絆を築くことができます。紅楼夢の物語を通じて、現代生活における「言外の意」を読み解くための古の知恵を学びましょう。',
+    kr: '소통은 단순히 말을 주고받는 것이 아니라 마음을 이해하는 것입니다. 문화마다 같은 말이라도 의미가 다를 수 있습니다. 상호문화 소통을 배우면 오해를 피하고 더 깊은 유대감을 쌓을 수 있습니다. 홍루몽의 이야기를 통해 현대 생활에서 말하지 않아도 통하는 지혜를 발견해 보세요.',
+    'zh-tw': '說話不僅是發出聲音，更是理解心靈。在不同的文化中，同樣的一句話可能有不同的意思。學習跨文化溝通，能幫助我們避免誤會，建立更好的關係。透過《紅樓夢》的故事，我們可以看見古人的智慧，學會如何「聽懂」那些沒說出口的話。',
+    'zh-cn': '说话不仅是发出声音，更是理解心灵。在不同的文化中，同样的一句话可能有不同的意思。学习跨文化沟通，能帮助我们避免误会，建立更好的关系。透过《红楼梦》的故事，我们可以看见古人的智慧，学会如何「听懂」那些没说出口的话。'
   }
 };
 
 export const FAMILY_MEMBERS: FamilyMember[] = [
   { id: 'f1', name: '賈母', family: 'Jia', role: 'blood', generation: 1, relation: { en: 'Supreme Matriarch', vn: 'Lão tổ tông', jp: '最高権威者', kr: '가문의 최고 어른', 'zh-tw': '全家權力最高的老祖宗。', 'zh-cn': '全家权力最高的老祖宗。' }, description: { en: 'The ultimate authority.', vn: 'Người có quyền lực cao nhất.', jp: '最高の権威者。', kr: '최고 권위자.', 'zh-tw': '她是家族的靈魂，非常疼愛孫子寶玉。', 'zh-cn': '她是家族的灵魂，非常疼爱孙子宝玉。' } },
-  { id: 'f7', name: '賈政', family: 'Jia', role: 'blood', generation: 2, relation: { en: 'Strict Father', vn: 'Phụ thân nghiêm khắc', jp: '厳格な父', kr: '엄격한 아버지', 'zh-tw': '賈母之子，寶玉之父。', 'zh-cn': '贾母之子，宝玉之父。' }, description: { en: 'Confucian discipline.', vn: 'Trật tự Nho giáo.', jp: '儒教的規律。', kr: '유교적 규율.', 'zh-tw': '為官清正但古板，經常責罰頑劣的寶玉。', 'zh-cn': '为官清正但古板，经常责罚顽劣。' } },
+  { id: 'f7', name: '賈政', family: 'Jia', role: 'blood', generation: 2, relation: { en: 'Strict Father', vn: 'Phụ thân nghiêm khắc', jp: '厳格な父', kr: '엄격한 아버지', 'zh-tw': '賈母之子，寶玉之父。', 'zh-cn': '贾母之子，宝玉之父。' }, description: { en: 'Confucian discipline.', vn: 'Trật tự Nho giáo.', jp: '儒教的規律。', kr: '유교적 규율.', 'zh-tw': '為官清正但古板，經常責罰頑劣的寶玉。', 'zh-cn': '为官清正 but 古板，经常责罚顽劣。' } },
   { id: 'f2', name: '賈寶玉', family: 'Jia', role: 'blood', generation: 3, relation: { en: 'The Heir', vn: 'Người thừa kế', jp: '跡継ぎ', kr: '후계자', 'zh-tw': '賈府的核心人物。', 'zh-cn': '賈府的核心人物。' }, description: { en: 'Loves beauty and freedom.', vn: 'Yêu cái đẹp và tự do.', jp: '美と自由を愛する。', kr: '미와 자유를 사랑함.', 'zh-tw': '含玉而生，厭惡科舉功名，深得賈母寵愛。', 'zh-cn': '含玉而生，厭惡科舉功名，深得賈母寵愛。' } },
   { id: 'f3', name: '林黛玉', family: 'Lin', role: 'blood', generation: 3, relation: { en: 'Fragile Poetess', vn: 'Nữ sĩ Lâm Đại Ngọc', jp: 'はかない詩人', kr: '섬세한 시인', 'zh-tw': '賈母之外孫女。', 'zh-cn': '賈母之外孫女。' }, description: { en: 'Sentimental genius.', vn: 'Thiên tài đa cảm.', jp: '感性豊かな天才。', kr: '감수성 풍부한 천재.', 'zh-tw': '才華橫溢，性格敏感多疑，代表純真愛情。', 'zh-cn': '才華橫溢，性格敏感多疑，代表純真愛情。' } },
   { id: 'f4', name: '薛寶釵', family: 'Xue', role: 'blood', generation: 3, relation: { en: 'Capable Cousin', vn: 'Biểu tỷ Tiết Bảo Thoa', jp: '有能な従姉', kr: '유능한 사촌', 'zh-tw': '薛姨媽之女。', 'zh-cn': '薛姨媽之女。' }, description: { en: 'Perfect traditional lady.', vn: 'Tiểu thư mẫu mực.', jp: '完璧な伝統的淑女。', kr: '완벽한 전통 숙녀.', 'zh-tw': '圓融大方，符合封建禮教的典範。', 'zh-cn': '圓融大方，符合封建禮教的典範。' } }
@@ -64,7 +85,7 @@ export const STORIES: Story[] = [
       jp: '有能な宝釵が金の首飾りを持って現れ、宝玉の玉との「金玉の縁」が噂されます。これは社会的適合性と、黛玉との精神的絆の対立を象徴しています。', 
       kr: '보차가 금노리개를 가지고 오자 "금옥의 인연" 소문이 돕니다. 이는 사회적 적합성과 대옥과의 정신적 유대 사이의 갈등을 보여줍니다.', 
       'zh-tw': '端莊大方的薛寶釵帶著金鎖來到賈府，眾人傳言「金鎖要配有玉的」，這便是金玉良緣之說。這給了心思敏感的黛玉巨大的壓力。寶釵處事圓融，深得長輩喜愛；而黛玉孤傲清高，只求真情。在繁華背後，一場關於禮教與情感的博弈悄然展開。', 
-      'zh-cn': '端庄大方的薛宝钗带着金锁来到贾府，众人传言「金锁要配有玉的」，这便是金玉良缘之说。这给了心思敏感的黛玉巨大的压力。宝钗处事圆融，深得长辈喜爱；而黛玉孤傲清高，只求真情. 在繁华背后，一场关于礼教与情感的博弈悄然展开。' 
+      'zh-cn': '端庄大方的薛宝钗带着金锁来到贾府，众人传言「金锁要配有玉的」，这便是金玉良缘之说. 这给了心思敏感的黛玉巨大的压力。宝钗处事圆融，深得长辈喜爱；而黛玉孤傲清高，只求真情. 在繁华背后，一场关于礼教与情感的博弈悄然展开。' 
     }, 
     culturalLesson: { 
       en: 'Collective harmony often overrides individual romance.', 
@@ -154,7 +175,7 @@ export const CRISES: CrisisDilemma[] = [
     topic: { en: 'Scenario 2: Nicknames and Power', vn: 'Kịch bản 2: Biệt danh and Quyền lực', jp: 'シナリオ2：愛称と権力', kr: '시나리오 2: 별명과 권력', 'zh-tw': '情境二：介紹詞與權力關係', 'zh-cn': '情境二：介绍词与权力关系' },
     theoryName: { en: 'Social Identity', vn: 'Danh tính xã hội', jp: '社会的アイデンティティ', kr: '사회적 정체성', 'zh-tw': '社會身分', 'zh-cn': '社会身份' },
     theorySimpleDesc: { en: 'Hierarchy in terms.', vn: 'Thứ bậc trong xưng hô.', jp: '呼称の階層。', kr: '호칭의 위계.', 'zh-tw': '上位者可以使用貶義詞顯示親近。', 'zh-cn': '上位者可以使用贬义词显示亲近。' },
-    context: { en: 'Grandmother calls Xifeng a "Spicy Girl".', vn: 'Bà gọi Hy Phượng là "đứa đanh đá".', jp: '祖母が熙鳳を「はねっかえり」と呼ぶ。', kr: '할머니가 희봉을 "매운 여자"라고 부름.', 'zh-tw': '賈母笑稱鳳姐是「潑辣貨」。', 'zh-cn': '贾母笑称凤姐是「泼辣货」。' },
+    context: { en: 'Grandmother calls Xifeng a "Spicy Girl".', vn: 'Bà gọi Hy Phượng là "đứa đanh đá".', jp: '祖母が熙鳳を「はねっかえり」と呼ぶ。', kr: '할머니가 희봉을 "매운 여자"라고 부름.', 'zh-tw': '賈母笑稱鳳姐是「潑辣貨」。', 'zh-cn': '賈母笑稱鳳姐是「潑辣貨」。' },
     crisisExplanation: { en: 'This signifies trust and favor.', vn: 'Điều này thể hiện sự tin tưởng and ưu ái.', jp: 'これは信頼の証です。', kr: '이는 신뢰의 표시입니다.', 'zh-tw': '這展現了極高的親密感。', 'zh-cn': '这展现了极高的亲密感。' },
     positiveView: { en: 'Deep familial love.', vn: 'Tình cảm gia đình sâu sắc.', jp: '深い家族愛。', kr: '깊은 가족애.', 'zh-tw': '親暱。', 'zh-cn': '亲昵。' },
     negativeView: { en: 'Potential disrespect.', vn: 'Tiềm ẩn sự thiếu tôn trọng.', jp: '不敬の可能性。', kr: '불경의 가능성.', 'zh-tw': '被看輕。', 'zh-cn': '被看轻。' },
@@ -184,7 +205,7 @@ export const CRISES: CrisisDilemma[] = [
   },
   {
     id: 'c5',
-    topic: { en: 'Scenario 5: Gift Giving Debt', vn: 'Kịch bản 5: Nợ quà tặng', jp: 'シナリオ5：贈答の債務', kr: '시나리오 5: 선물의 빚', 'zh-tw': '情境五：送禮的人情債', 'zh-cn': '情境五：送礼的人情债' },
+    topic: { en: 'Scenario 5: Gift Giving Debt', vn: 'Kịch bản 5: Nợ quà tặng', jp: 'シナリオ5：贈答의 債務', kr: '시나리오 5: 선물의 빚', 'zh-tw': '情境五：送禮的人情債', 'zh-cn': '情境五：送礼的人情债' },
     theoryName: { en: 'Guanxi', vn: 'Quan hệ', jp: '関係（グアンシ）', kr: '괸시 (인맥)', 'zh-tw': '互惠原理', 'zh-cn': '互惠原理' },
     theorySimpleDesc: { en: 'Favor exchange.', vn: 'Trao đổi ân huệ.', jp: '恩義の交換。', kr: '은혜의 교환.', 'zh-tw': '收禮代表未來要還人情。', 'zh-cn': '收礼代表未来要还人情。' },
     context: { en: 'Xifeng sends expensive silk.', vn: 'Hy Phượng gửi lụa đắt tiền.', jp: '高価な絹を送る。', kr: '비싼 비단을 보냄.', 'zh-tw': '收了禮，就得幫忙。', 'zh-cn': '收了礼，就得帮忙。' },
@@ -261,16 +282,16 @@ export const PROVERBS: PhraseEntry[] = [
   { id: 'p8', phrase: '牆倒眾人推', literal: { en: 'Wall falls, everyone pushes.', vn: 'Dậu đổ bìm leo.', jp: '便乗。', kr: '편승.', 'zh-tw': '落井下石。', 'zh-cn': '落井下石。' }, hidden: { en: 'Cruelty.', vn: 'Sự tàn nhẫn.', jp: '冷酷。', kr: '냉혹.', 'zh-tw': '人性。', 'zh-cn': '人性。' }, example: '牆倒眾人推。' },
   { id: 'p9', phrase: '唇亡齒寒', literal: { en: 'Lips gone, teeth cold.', vn: 'Môi hở răng lạnh.', jp: '運命共同体。', kr: '운명 공동체.', 'zh-tw': '關係密切。', 'zh-cn': '关系密切。' }, hidden: { en: 'Interdependence.', vn: 'Phụ thuộc lẫn nhau.', jp: '相互依存。', kr: '상호 의존.', 'zh-tw': '團結。', 'zh-cn': '团结。' }, example: '唇亡齒寒。' },
   { id: 'p10', phrase: '畫龍點睛', literal: { en: 'Finish the dragon.', vn: 'Vẽ rồng điểm mắt.', jp: '仕上げ。', kr: '화룡점정.', 'zh-tw': '關鍵一筆。', 'zh-cn': '关键一笔。' }, hidden: { en: 'Critical touch.', vn: 'Điểm nhấn.', jp: '重要。', kr: '중요.', 'zh-tw': '精彩。', 'zh-cn': '精彩。' }, example: '畫龍點睛。' },
-  { id: 'p11', phrase: '塞翁失馬', literal: { en: 'Old man lost horse.', vn: 'Tái ông thất mã.', jp: '予測不能。', kr: '새옹지마.', 'zh-tw': '禍福難料。', 'zh-cn': '祸福难料。' }, hidden: { en: 'Luck changes.', vn: 'May rủi thay đổi.', jp: '変化。', kr: '변화.', 'zh-tw': '安慰。', 'zh-cn': '安慰。' }, example: '塞翁失馬。' },
+  { id: 'p11', phrase: '塞翁失馬', literal: { en: 'Old man lost horse.', vn: 'Tái ông thất mã.', jp: '予測不能。', kr: '새옹지마.', 'zh-tw': '禍福難料。', 'zh-cn': '禍福難料。' }, hidden: { en: 'Luck changes.', vn: 'May rủi thay đổi.', jp: '変化。', kr: '변화.', 'zh-tw': '安慰。', 'zh-cn': '安慰。' }, example: '塞翁失馬。' },
   { id: 'p12', phrase: '破釜沉舟', literal: { en: 'Break pots, sink boats.', vn: 'Phá phủ trầm chu.', jp: '決意。', kr: '결의.', 'zh-tw': '不留後路。', 'zh-cn': '不留后路。' }, hidden: { en: 'Determination.', vn: 'Quyết tâm.', jp: '不退転。', kr: '불퇴전.', 'zh-tw': '勇氣。', 'zh-cn': '勇气。' }, example: '破釜沉舟。' },
   { id: 'p13', phrase: '守株待兔', literal: { en: 'Wait for rabbit.', vn: 'Ôm cây đợi thỏ.', jp: '幸運待ち。', kr: '요행 바라기.', 'zh-tw': '死板。', 'zh-cn': '死板。' }, hidden: { en: 'Laziness.', vn: 'Lười biếng.', jp: '怠慢。', kr: '나태.', 'zh-tw': '諷刺。', 'zh-cn': '讽刺。' }, example: '守株待兔。' },
   { id: 'p14', phrase: '亡羊補牢', literal: { en: 'Fix fold after loss.', vn: 'Mất bò lo chuồng.', jp: '補填。', kr: '보완.', 'zh-tw': '事後補救。', 'zh-cn': '事后补救。' }, hidden: { en: 'Better late.', vn: 'Muộn tốt hơn không.', jp: '遅くとも。', kr: '늦어도.', 'zh-tw': '及時。', 'zh-cn': '及时。' }, example: '亡羊補牢。' },
   { id: 'p15', phrase: '拔苗助長', literal: { en: 'Pull sprouts.', vn: 'Nhổ mạ.', jp: '急ぎすぎ。', kr: '조급함.', 'zh-tw': '欲速則不達。', 'zh-cn': '欲速则不达。' }, hidden: { en: 'Patience.', vn: 'Kiên nhẫn.', jp: '忍耐。', kr: '인내.', 'zh-tw': '反面教材。', 'zh-cn': '反面教材。' }, example: '拔苗助長。' },
   { id: 'p16', phrase: '三思而後行', literal: { en: 'Think thrice.', vn: 'Tam tư.', jp: '熟考。', kr: '심사숙고.', 'zh-tw': '慎重。', 'zh-cn': '慎重。' }, hidden: { en: 'Caution.', vn: 'Thận trọng.', jp: '慎重。', kr: '신중.', 'zh-tw': '教導。', 'zh-cn': '教导。' }, example: '三思。' },
   { id: 'p17', phrase: '有志者事竟成', literal: { en: 'Will makes way.', vn: 'Có chí thì nên.', jp: '志。', kr: '의지.', 'zh-tw': '堅持。', 'zh-cn': '坚持。' }, hidden: { en: 'Persistence.', vn: 'Kiên trì.', jp: '継続。', kr: '지속.', 'zh-tw': '鼓勵。', 'zh-cn': '鼓励。' }, example: '事竟成。' },
-  { id: 'p18', phrase: '患難見真情', literal: { en: 'Truth in trouble.', vn: 'Gian nan.', jp: '逆境。', kr: '역경.', 'zh-tw': '真朋友。', 'zh-cn': '真朋友。' }, hidden: { en: 'Loyalty.', vn: 'Trung thành.', jp: '忠誠。', kr: '충성.', 'zh-tw': '體會。', 'zh-cn': '体会。' }, example: '真情。' },
-  { id: 'p19', phrase: '禍從口出', literal: { en: 'Disaster from mouth.', vn: 'Họa từ miệng.', jp: '失言。', kr: '실언.', 'zh-tw': '謹言。', 'zh-cn': '谨言。' }, hidden: { en: 'Silence.', vn: 'Im lặng.', jp: '沈黙。', kr: '침묵.', 'zh-tw': '警告。', 'zh-cn': '警告。' }, example: '口出。' },
-  { id: 'p20', phrase: '禮多人不怪', literal: { en: 'More courtesy.', vn: 'Lễ nhiều.', jp: '礼儀。', kr: '예의.', 'zh-tw': '禮貌安全。', 'zh-cn': '礼貌安全。' }, hidden: { en: 'Etiquette.', vn: 'Lễ tiết.', jp: 'マナー。', kr: '매너.', 'zh-tw': '客氣。', 'zh-cn': '客气。' }, example: '人不怪。' }
+  { id: 'p18', phrase: '患難見真情', literal: { en: 'Truth in trouble.', vn: 'Gian nan.', jp: '逆境。', kr: '역경.', 'zh-tw': '真朋友。', 'zh-cn': '真朋友。' }, hidden: { en: 'Loyalty.', vn: 'Trung thành.', jp: '忠誠。', kr: '충성.', 'zh-tw': '體會。', 'zh-cn': '體會。' }, example: '真情。' },
+  { id: 'p19', phrase: '禍從口出', literal: { en: 'Disaster from mouth.', vn: 'Họa từ miệng.', jp: '失言。', kr: '실언.', 'zh-tw': '謹言。', 'zh-cn': '謹言。' }, hidden: { en: 'Silence.', vn: 'Im lặng.', jp: '沈黙。', kr: '침묵.', 'zh-tw': '警告。', 'zh-cn': '警告。' }, example: '口出。' },
+  { id: 'p20', phrase: '禮多人不怪', literal: { en: 'More courtesy.', vn: 'Lễ nhiều.', jp: '礼儀。', kr: '예의.', 'zh-tw': '禮貌安全。', 'zh-cn': '禮貌安全。' }, hidden: { en: 'Etiquette.', vn: 'Lễ tiết.', jp: 'マナー。', kr: '매너.', 'zh-tw': '客氣。', 'zh-cn': '客气。' }, example: '人不怪。' }
 ];
 
 export const DAILY_PHRASES: PhraseEntry[] = [
