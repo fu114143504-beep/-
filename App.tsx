@@ -11,8 +11,8 @@ const App: React.FC = () => {
   
   const mainRef = useRef<HTMLElement>(null);
 
-  // 更新後的影片 ID：Ba-ZEHBI-bc
-  const VIDEO_ID = "Ba-ZEHBI-bc";
+  // 更新後的影片 ID：Xf6ANQc6aVM (主題：早生貴子 - 跨文化對話範例)
+  const VIDEO_ID = "Xf6ANQc6aVM";
 
   useEffect(() => {
     if (mainRef.current) {
@@ -62,7 +62,7 @@ const App: React.FC = () => {
          <div className="absolute bottom-10 left-10 text-[250px] opacity-5 font-black pointer-events-none select-none">習</div>
       </div>
 
-      {/* Video Cinema Section - AI Function Removed */}
+      {/* Video Cinema Section - Updated for Portrait Video */}
       <div className="bg-white p-8 md:p-16 rounded-[4rem] shadow-2xl border-t-[12px] border-[#d4af37] space-y-12 relative overflow-hidden">
         <div className="text-center space-y-4">
           <h2 className="text-3xl md:text-5xl font-black text-[#8b0000] tracking-tight">🎬 跨文化沉浸放映室</h2>
@@ -72,15 +72,15 @@ const App: React.FC = () => {
           </div>
         </div>
 
-        {/* Cinematic Video Player */}
-        <div className="relative group mx-auto max-w-4xl">
+        {/* Cinematic Video Player - Optimized for Vertical Video */}
+        <div className="relative group mx-auto max-w-md">
            <div className="absolute -inset-8 bg-gradient-to-tr from-[#d4af37]/20 to-[#8b0000]/10 rounded-[4rem] blur-2xl group-hover:opacity-100 transition-opacity"></div>
            
-           <div className="relative aspect-video bg-black rounded-[2.5rem] overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.5)] border-[10px] border-[#f5e6d3] ring-2 ring-[#d4af37]/30">
+           <div className="relative aspect-[9/16] bg-black rounded-[2.5rem] overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.5)] border-[10px] border-[#f5e6d3] ring-2 ring-[#d4af37]/30">
              <iframe 
                className="absolute inset-0 w-full h-full scale-[1.01]"
-               src={`https://www.youtube.com/embed/${VIDEO_ID}?start=1&autoplay=1&mute=1&loop=1&playlist=${VIDEO_ID}&rel=0&modestbranding=1&controls=1&enablejsapi=1`} 
-               title="Cross-Cultural Video Lesson"
+               src={`https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&mute=1&loop=1&playlist=${VIDEO_ID}&rel=0&modestbranding=1&controls=1&enablejsapi=1`} 
+               title="Cross-Cultural Video Lesson - 早生貴子"
                frameBorder="0" 
                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                referrerPolicy="strict-origin-when-cross-origin"
@@ -100,6 +100,7 @@ const App: React.FC = () => {
         <div className="text-center max-w-2xl mx-auto border-t border-slate-100 pt-8">
           <p className="text-lg text-slate-400 font-medium italic">
             觀看影片並體會對話中的「弦外之音」。<br/>
+            了解跨文化語境中的祝福與隱含意圖。<br/>
             點擊導覽列切換更多單元。
           </p>
         </div>
