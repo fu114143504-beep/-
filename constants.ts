@@ -1,120 +1,194 @@
 
-import { FamilyMember, Story, CrisisDilemma, PhraseEntry, MultiLangText } from './types';
+import { AppView, MultiLangText, ChapterContent } from './types';
 
 export const NAV_LABELS: Record<string, MultiLangText> = {
-  home: { en: 'Welcome', vn: 'Chào mừng', jp: 'ようこそ', kr: '환영', 'zh-tw': '首頁', 'zh-cn': '首页' },
-  'family-tree': { en: 'People', vn: 'Nhân vật', jp: '登場人物', kr: '인물', 'zh-tw': '家族圖', 'zh-cn': '家族图' },
-  stories: { en: 'Stories', vn: 'Câu chuyện', jp: '物語', kr: '이야기', 'zh-tw': '紅樓故事', 'zh-cn': '紅樓故事' },
-  crisis: { en: 'Context', vn: 'Ngữ cảnh', jp: '文脈', kr: '맥락', 'zh-tw': '文化危機', 'zh-cn': '文化危机' },
-  proverbs: { en: 'Proverbs', vn: 'Tục ngữ', jp: 'ことわざ', kr: '속담', 'zh-tw': '諺語', 'zh-cn': '谚语' },
-  daily: { en: 'Daily', vn: 'Hàng ngày', jp: '日常', kr: '일상', 'zh-tw': '現代對話', 'zh-cn': '現代對話' }
+  home: { en: 'Welcome', vn: 'Chào mừng', jp: 'ようこそ', kr: '환영', 'zh-tw': '賓至如歸', 'zh-cn': '宾至如归' },
+  chapter1: { en: 'Offspring', vn: 'Hồi 1', jp: '第1回', kr: '제1장', 'zh-tw': '兒孫滿堂', 'zh-cn': '儿孙满堂' },
+  chapter2: { en: 'Humility', vn: 'Hồi 2', jp: '第2回', kr: '제2장', 'zh-tw': '謙卑之道', 'zh-cn': '谦卑之道' },
+  chapter3: { en: 'Sincerity', vn: 'Hồi 3', jp: '第3回', kr: '제3장', 'zh-tw': '心心相印', 'zh-cn': '心心相印' },
+  chapter4: { en: 'Discipline', vn: 'Hồi 4', jp: '第4回', kr: '제4장', 'zh-tw': '鐵面無私', 'zh-cn': '铁面无私' }
 };
 
 export const HOME_CONTENT = {
   title: { 
-    en: 'What is Cross-Cultural Communication?', 
-    vn: 'Giao tiếp liên văn hóa là gì?', 
-    jp: '異文化コミュニケーションとは？', 
-    kr: '상호문화 소통이란 무엇인가요?', 
-    'zh-tw': '什麼是跨文化溝通？', 
-    'zh-cn': '什么是跨文化沟通？' 
+    en: 'Cultural Context Lab', 
+    vn: 'Phòng thí nghiệm văn hóa', 
+    jp: '文化語境ラボ', 
+    kr: '문화 맥락 연구실', 
+    'zh-tw': '紅樓語境：中文跨文化教室', 
+    'zh-cn': '红楼语境：中文跨文化教室' 
   },
   subtitle: { 
-    en: 'Using "Dream of the Red Chamber" as a base to understand classical literature and daily communication. We use simple Chinese to help you understand the deeper meanings when Taiwanese people speak.', 
-    vn: 'Sử dụng "Hồng Lâu Mộng" làm nền tảng để hiểu văn học cổ điển và giao tiếp hàng ngày. Chúng tôi dùng tiếng Trung đơn giản để giúp bạn hiểu ẩn ý của người Đài Loan.', 
-    jp: '『紅楼夢』をベースに、古典文学と日常のコミュニケーションを理解します。簡単な中国語で、台湾人が話す言葉の深い意味を理解する手助けをします。', 
-    kr: '『홍루몽』을 바탕으로 고전 문학과 일상의 소통을 이해합니다. 쉬운 중국어를 통해 대만 사람들이 말하는 깊은 의미를 이해하도록 도와줍니다.', 
-    'zh-tw': '以《紅樓夢》為基礎，帶你了解中國古典文學與日常溝通。我們用最簡單的中文，幫助你在學習路上，聽得懂台灣人說話的深層含義。', 
-    'zh-cn': '以《红楼梦》为基础，带你了解中国古典文学与日常沟通。我们用最简单的中文，帮助你在学习路上，听得懂台湾人说话的深层含义。' 
+    en: 'Learning the "hidden meaning" of modern Chinese through classical wisdom.', 
+    vn: 'Học "ý nghĩa ẩn giấu" của tiếng Trung hiện đại thông qua trí tuệ cổ điển.', 
+    jp: '古典の知恵を通じて現代中国語の「隠れた意味」を学びます。', 
+    kr: '고전의 지혜를 통해 현대 중국어의 "숨겨진 의미"를 배웁니다.', 
+    'zh-tw': '透過《紅樓夢》的智慧，學習現代中文的「弦外之音」。讓你在台灣與華人社會中，說話更有溫度，聽話更有深度。', 
+    'zh-cn': '透过《红楼梦》的智慧，学习现代中文的“弦外之音”。让你在台湾与华人社会中，说话更有温度，听话更有深度。' 
   }
 };
 
-export const HOME_ANALYSIS: Record<string, MultiLangText> = {
-  badge: {
-    en: 'Cultural Case Study',
-    vn: 'Nghiên cứu điển hình văn hóa',
-    jp: '文化ケーススタディ',
-    kr: '문화 사례 연구',
-    'zh-tw': '文化案例研究',
-    'zh-cn': '文化案例研究'
+export const CHAPTERS: ChapterContent[] = [
+  {
+    id: 'chapter1',
+    title: { en: 'Chapter 1: The Blessing of Children', vn: 'Sớm sinh quý tử', jp: '早生貴子', kr: '조생귀자', 'zh-tw': '第一回：「早生貴子」的跨文化祝福', 'zh-cn': '第一回：“早生贵子”的跨文化祝福' },
+    classicText: "「一節一節，子孫繁衍，這才是家門之慶。」",
+    modernExplanation: {
+      en: 'The phrase "Zao Sheng Gui Zi" (Early birth of a son) is a classic Chinese blessing representing family continuity.',
+      vn: 'Cụm từ "Tảo sinh quý tử" là một lời chúc phúc cổ điển của Trung Quốc đại diện cho sự tiếp nối gia đình.',
+      jp: '「早生貴子」という言葉は、家族の継続を表す古典的な中国の祝福です。',
+      kr: '“조생귀자”라는 문구는 가족의 연속성을 나타내는 고전적인 중국의 축복입니다.',
+      'zh-tw': '在華人社會中，「早生貴子」不僅是一句祝福語，它背後代表了古代對於家族延續與興旺的期待。對於外國朋友來說，理解這句話能讓你更懂長輩的關心。',
+      'zh-cn': '在华人社会中，“早生贵子”不仅是一句祝福语，它背后代表了古代对于家族延续与兴旺的期待。对于外国朋友来说，理解这句话能让你更懂长辈的关心。'
+    },
+    videoUrl: "Xf6ANQc6aVM",
+    contrast: {
+      ancient: { en: 'Offspring is the duty to ancestors.', vn: 'Con cái là nghĩa vụ với tổ tiên.', jp: '子孫は祖先への義務です。', kr: '자손은 조상에 대한 의무입니다.', 'zh-tw': '古代：多子多福，生孩子是為了延續家族香火與地位。', 'zh-cn': '古代：多子多福，生孩子是为了延续家族香火与地位。' },
+      modern: { en: 'Personal choice and happiness over duty.', vn: 'Lựa chọn cá nhân hơn là nghĩa vụ.', jp: '義務よりも個人の選択と幸せ。', kr: '의무보다 개인의 선택과 행복.', 'zh-tw': '現代：個人自由與幸福重於一切，生不生孩子是個人的權利。', 'zh-cn': '现代：个人自由与幸福重于一切，生不生孩子是个人的权利。' }
+    },
+    vocab: [
+      { word: '早生貴子', meaning: { en: 'Early birth of a son', vn: 'Sớm sinh quý tử', jp: '早生貴子', kr: '조생귀자', 'zh-tw': '給新婚夫妻的傳統祝福。', 'zh-cn': '给新婚夫妻的传统祝福。' } },
+      { word: '祝福', meaning: { en: 'Blessing', vn: 'Chúc phúc', jp: '祝福', kr: '축복', 'zh-tw': '希望別人得到好運。', 'zh-cn': '希望别人得到好运。' } },
+      { word: '傳承', meaning: { en: 'Inheritance/Legacy', vn: 'Truyền thừa', jp: '継承', kr: '전승', 'zh-tw': '把好的東西傳給下一代。', 'zh-cn': '把好的东西传给下一代。' } },
+      { word: '長輩', meaning: { en: 'Elders', vn: 'Bề trên', jp: '目上の人', kr: '어른', 'zh-tw': '家族中地位或年紀較高的人。', 'zh-cn': '家族中地位或年纪较高的人。' } },
+      { word: '順其自然', meaning: { en: 'Go with the flow', vn: 'Thuận theo tự nhiên', jp: '成り行きに任せる', kr: '순리대로 하다', 'zh-tw': '不過度勉強，讓事情自然發生。', 'zh-cn': '不过度勉强，让事情自然发生。' } }
+    ],
+    grammar: [
+      { point: '「早日...」', usage: { en: 'Doing something early', vn: 'Sớm...', jp: '早く…する', kr: '조속히...', 'zh-tw': '表示希望某件好事趕快發生（例如：早日康復）。', 'zh-cn': '表示希望某件好事赶快发生（例如：早日康复）。' } },
+      { point: '「為了...」', usage: { en: 'For the sake of...', vn: 'Để...', jp: '…のために', kr: '...을 위해서', 'zh-tw': '用來引出動作的目的。', 'zh-cn': '用来引出动作的目的。' } },
+      { point: '「只要...就...」', usage: { en: 'As long as...', vn: 'Chỉ cần... thì...', jp: '…さえすれば…', kr: '...하기만 하면 ...하다', 'zh-tw': '表達一種條件與結果的關係。', 'zh-cn': '表达一种条件与结果的关系。' } },
+      { point: '「既然...那...」', usage: { en: 'Since...', vn: 'Đã... thì...', jp: '…なら…', kr: '...이왕이면 ...', 'zh-tw': '用來引出事實後面的建議。', 'zh-cn': '用来引出事实后面的建议。' } },
+      { point: '「難道...嗎？」', usage: { en: 'Could it be...?', vn: 'Chẳng lẽ... sao?', jp: 'まさか…か？', kr: '설마 ...인가?', 'zh-tw': '反問句，加強說話的語氣。', 'zh-cn': '反问句，加强说话的语气。' } }
+    ],
+    modernEssay: {
+      en: 'In modern Taiwan, "Zao Sheng Gui Zi" is still common at weddings, but its tone has changed...',
+      vn: 'Ở Đài Loan hiện đại, câu nói này vẫn phổ biến nhưng sắc thái đã thay đổi...',
+      jp: '現代の台湾でも結婚式でよく使われますが、ニュアンスが変わりました...',
+      kr: '현대 대만에서도 결혼식에서 자주 쓰이지만 뉘앙스가 바뀌었습니다...',
+      'zh-tw': '在現代的台灣婚禮上，長輩們還是會舉杯說「早生貴子」。年輕的小明雖然覺得這有點壓力，但他知道這是一種文化傳承。他笑著回答說：「謝謝，我們順其自然，希望以後的生活一直幸福就好。」這就是現代人處理古典期待的智慧。',
+      'zh-cn': '在现代的台湾婚礼上，长辈们还是会举杯说“早生贵子”。年轻的小明虽然觉得这有点压力，但他知道這是一种文化传承。他笑着回答说：“谢谢，我们顺其自然，希望以后的生活一直幸福就好。”这就是现代人处理古典期待的智慧。'
+    }
   },
-  caseStudyTitle: {
-    en: 'Cultural Changes: "Zao Sheng Gui Zi"',
-    vn: 'Thay đổi văn hóa: "Sớm sinh quý tử"',
-    jp: '文化の変遷：「早生貴子」',
-    kr: '문화적 변천: "조생귀자"',
-    'zh-tw': '從「早生貴子」看文化變遷',
-    'zh-cn': '从「早生贵子」看文化变迁'
+  {
+    id: 'chapter2',
+    title: { en: 'Chapter 2: The Art of Humility', vn: 'Nghệ thuật khiêm tốn', jp: '謙遜の技術', kr: '겸손의 기술', 'zh-tw': '第二回：劉姥姥進大觀園與幽默感', 'zh-cn': '第二回：刘姥姥进大观园与幽默感' },
+    classicText: "「老劉，老劉，食量大如牛，吃一個老母豬不抬頭。」",
+    modernExplanation: {
+      en: 'Granny Liu uses self-deprecating humor to cross social boundaries and win hearts.',
+      vn: 'Lưu Lão Lão sử dụng sự hài hước để xóa tan rào cản xã hội.',
+      jp: '劉姥姥は自虐的なユーモアを使って社会の壁を越え、心を掴みます。',
+      kr: '유노파는 자기 비하적인 유머를 사용하여 사회적 장벽을 넘고 마음을 사로잡습니다.',
+      'zh-tw': '劉姥姥進大觀園時，故意裝笨逗大家開心。這種「幽默感」其實是一種生存智慧，讓地位高的人放下戒心。',
+      'zh-cn': '刘姥姥进大观园时，故意装笨逗大家开心。这种“幽默感”其实是一种生存智慧，让地位高的人放下戒心。'
+    },
+    videoUrl: "Xf6ANQc6aVM", // Placeholder
+    contrast: {
+      ancient: { en: 'Strict class hierarchy; bowing is mandatory.', vn: 'Phân chia giai cấp nghiêm ngặt.', jp: '厳格な階級制度。', kr: '엄격한 계급 제도.', 'zh-tw': '古代：階級明確，低地位者必須取悅高地位者。', 'zh-cn': '古代：阶级明确，低地位者必须取悦高地位者。' },
+      modern: { en: 'Flat hierarchy; humor is for rapport building.', vn: 'Giao tiếp bình đẳng hơn.', jp: 'フラットな関係。', kr: '수평적 관계.', 'zh-tw': '現代：追求平等，幽默被視為一種「軟實力」與人格魅力。', 'zh-cn': '现代：追求平等，幽默被视为一种“软实力”与人格魅力。' }
+    },
+    vocab: [
+      { word: '幽默感', meaning: { en: 'Sense of humor', vn: 'Khiếu hài hước', jp: 'ユーモア', kr: '유머 감각', 'zh-tw': '說話有趣，讓人想笑。', 'zh-cn': '说话有趣，让人想笑。' } },
+      { word: '尷尬', meaning: { en: 'Awkward', vn: 'Ngại ngùng', jp: '気まずい', kr: '어색하다', 'zh-tw': '覺得不好意思或不自在。', 'zh-cn': '觉得不好意思或不自在。' } },
+      { word: '自嘲', meaning: { en: 'Self-deprecation', vn: 'Tự giễu', jp: '自虐', kr: '자학', 'zh-tw': '開自己的玩笑。', 'zh-cn': '开自己的玩笑。' } },
+      { word: '氣氛', meaning: { en: 'Atmosphere', vn: 'Bầu không khí', jp: '雰囲気', kr: '분위기', 'zh-tw': '環境給人的感覺。', 'zh-cn': '环境给人的感觉。' } },
+      { word: '圓滑', meaning: { en: 'Smooth/Socially adept', vn: 'Trơn tru/Khéo léo', jp: '円滑', kr: '원만하다', 'zh-tw': '說話做事很靈活，不傷感情。', 'zh-cn': '说话做事很灵活，不伤感情。' } }
+    ],
+    grammar: [
+      { point: '「怪不得...」', usage: { en: 'No wonder...', vn: 'Chẳng trách...', jp: '道理で…', kr: '어쩐지...', 'zh-tw': '用於知道原因後表示驚訝或明白。', 'zh-cn': '用于知道原因后表示惊讶或明白。' } },
+      { point: '「竟然...」', usage: { en: 'Unexpectedly', vn: 'Bất ngờ', jp: '意外にも', kr: '뜻밖에도', 'zh-tw': '表示事情出乎意料之外。', 'zh-cn': '表示事情出乎意料之外。' } },
+      { point: '「...得要命」', usage: { en: 'Extremely...', vn: '...đến mức mạng', jp: '死ぬほど…', kr: '죽을 만큼...', 'zh-tw': '誇張修飾詞，表示程度非常深（如：尷尬得要命）。', 'zh-cn': '夸张修饰词，表示程度非常深（如：尴尬得要命）。' } },
+      { point: '「不但...反而...」', usage: { en: 'Not only... but on the contrary...', vn: 'Không những... mà trái lại...', jp: '…だけでなく、かえって…', kr: '...뿐만 아니라 오히려...', 'zh-tw': '表示情況與預期完全相反。', 'zh-cn': '表示情况与预期完全相反。' } },
+      { point: '「話說回來...」', usage: { en: 'On the other hand...', vn: 'Nói đi cũng phải nói lại...', jp: '話を戻すと…', kr: '다시 말해서...', 'zh-tw': '用於轉折，帶回主要的議題。', 'zh-cn': '用于转折，带回主要的议题。' } }
+    ],
+    modernEssay: {
+      en: 'In modern business, Granny Liu\'s "low profile" strategy is still effective for new markets...',
+      vn: 'Trong kinh doanh hiện đại, chiến lược này vẫn hiệu quả...',
+      jp: '現代のビジネスでも、この「低姿勢」戦略は有効です...',
+      kr: '현대 비즈니스에서도 이 "낮은 자세" 전략은 효과적입니다...',
+      'zh-tw': '約翰第一次代表公司去見台灣的大客戶，氣氛一開始很緊張。他想起劉姥姥的故事，於是幽默地說：「我的中文可能跟我的廚藝一樣，還需要多練習！」大家不但沒笑他，反而氣氛輕鬆了起來。這就是跨文化溝通中的「自嘲」藝術。',
+      'zh-cn': '约翰第一次代表公司去见台湾的大客户，气氛一开始很紧张。他想起刘姥姥的故事，于是幽默地说：“我的中文可能跟我的厨艺一样，还需要多练习！”大家不但没笑他，反而气氛轻松了起来。这就是跨文化沟通中的“自嘲”艺术。'
+    }
   },
-  explanationPast: {
-    en: 'In the past, "Zao Sheng Gui Zi" (Have a baby soon) was a common wedding blessing, representing good wishes for the couple.',
-    vn: 'Trong quá khứ, "Sớm sinh quý tử" là một lời chúc đám cưới phổ biến, thể hiện những lời chúc tốt đẹp dành cho cặp đôi.',
-    jp: 'かつて「早生貴子」（早く子供を授かるように）は一般的な結婚の祝福の言葉であり、新婚夫婦への願いを表していました。',
-    kr: '과거에는 "조생귀자"(빨리 아들을 낳기를)가 일반적인 결혼 축사였으며, 부부에게 보내는 좋은 소망을 의미했습니다.',
-    'zh-tw': '在過去，「早生貴子」是一句常見的結婚祝福話，代表對新人的美好祝願。',
-    'zh-cn': '在过去，「早生贵子」是一句常见的结婚祝福话，代表对新人的美好祝愿。'
+  {
+    id: 'chapter3',
+    title: { en: 'Chapter 3: True Heart vs Rules', vn: 'Chân tâm và quy tắc', jp: '本心と規則', kr: '진심과 규칙', 'zh-tw': '第三回：賈寶玉的真心與情感表達', 'zh-cn': '第三回：贾宝玉的真心与情感表达' },
+    classicText: "「你也不用說這些話，我只問你：你心裡到底有沒有我？」",
+    modernExplanation: {
+      en: 'Baoyu values genuine emotion over social expectations, reflecting universal human conflict.',
+      vn: 'Bảo Ngọc coi trọng cảm xúc hơn là kỳ vọng xã hội.',
+      jp: '宝玉は社会的期待よりも純粋な感情を重視し、普遍的な葛藤を反映しています。',
+      kr: '보옥은 사회적 기대보다 진정한 감정을 중시하며 보편적인 갈등을 반영합니다.',
+      'zh-tw': '賈寶玉是一個很不傳統的人，他覺得「感情」比「規矩」更重要。這句話雖然簡單，卻包含了華人社會中最難說出口的真話。',
+      'zh-cn': '贾宝玉是一个很不传统的人，他觉得“感情”比“规矩”更重要。这句话虽然简单，却包含了华人社会中最难说出口的真话。'
+    },
+    videoUrl: "Xf6ANQc6aVM", // Placeholder
+    contrast: {
+      ancient: { en: 'Duty and social roles define human connections.', vn: 'Nghĩa vụ xác định các mối quan hệ.', jp: '義務と社会的役割が人間関係を定義します。', kr: '의무와 사회적 역할이 인간관계를 정의합니다.', 'zh-tw': '古代：婚姻是利益交換，真心往往被犧牲。', 'zh-cn': '古代：婚姻是利益交换，真心往往被牺牲。' },
+      modern: { en: 'Individual sincerity and transparency are core values.', vn: 'Sự chân thành cá nhân là cốt lõi.', jp: '個人の誠実さと透明性が核心的価値です。', kr: '개인의 성실함과 투명성이 핵심 가치입니다.', 'zh-tw': '現代：追求真誠的伴侶關係，但在家庭壓力中依然糾結。', 'zh-cn': '现代：追求真诚的伴侣关系，但在家庭压力中依然纠结。' }
+    },
+    vocab: [
+      { word: '真心', meaning: { en: 'Sincerity/True heart', vn: 'Chân tâm', jp: '本心', kr: '진심', 'zh-tw': '心裡最真實的想法。', 'zh-cn': '心里最真实的想法。' } },
+      { word: '到底', meaning: { en: 'In the end/Really', vn: 'Rốt cuộc', jp: '一体', kr: '도대체', 'zh-tw': '究竟（強調尋求答案）。', 'zh-cn': '究竟（强调寻求答案）。' } },
+      { word: '糾結', meaning: { en: 'Tangled/Conflict', vn: 'Rắc rối/Giao tranh', jp: '葛藤', kr: '갈등', 'zh-tw': '想不通，心理很亂。', 'zh-cn': '想不通，心理很乱。' } },
+      { word: '壓力', meaning: { en: 'Pressure', vn: 'Áp lực', jp: 'プレッシャー', kr: '압박', 'zh-tw': '環境給人的沉重負擔。', 'zh-cn': '环境给人的沉重负担。' } },
+      { word: '弦外之音', meaning: { en: 'Hidden implication', vn: 'Ý tại ngôn ngoại', jp: '言外の意味', kr: '속뜻', 'zh-tw': '說話沒直說，要聽懂暗示。', 'zh-cn': '说话没直说，要听懂暗示。' } }
+    ],
+    grammar: [
+      { point: '「到底...不...」', usage: { en: 'Whether or not...', vn: 'Rốt cuộc có... hay không', jp: '一体…なのか？', kr: '도대체 ...인가?', 'zh-tw': '用於詢問最終確定的情況。', 'zh-cn': '用于询问最终确定的情况。' } },
+      { point: '「寧可...也不...」', usage: { en: 'Would rather... than...', vn: 'Thà... còn hơn...', jp: '…するくらいなら…', kr: '...할지언정 ...하지 않다', 'zh-tw': '表示一種極端的選擇。', 'zh-cn': '表示一种极致的选择。' } },
+      { point: '「與其...不如...」', usage: { en: 'Instead of... better to...', vn: 'Thay vì... thì...', jp: '…よりはむしろ…', kr: '...하기보다 ...하는 편이 낫다', 'zh-tw': '表示比較後的較好建議。', 'zh-cn': '表示比较后的较好建议。' } },
+      { point: '「要不是...就...」', usage: { en: 'If not for... then...', vn: 'Nếu không vì... thì...', jp: 'もし…でなかったら…', kr: '...이 아니었다면 ...했을 것이다', 'zh-tw': '用來引出與事實相反的假設。', 'zh-cn': '用来引出与事实相反的假设。' } },
+      { point: '「搞了半天...原來...」', usage: { en: 'After a long time, it turns out...', vn: 'Mãi một hồi mới biết...', jp: '散々やって…結局…', kr: '한참을 그랬는데 결국...', 'zh-tw': '表示經過一番曲折後才發現真相。', 'zh-cn': '表示经过一番曲折后才发现真相。' } }
+    ],
+    modernEssay: {
+      en: 'Modern lovers still play the "hide and seek" game of emotions, requiring cross-cultural wisdom...',
+      vn: 'Những người yêu nhau hiện đại vẫn chơi trò "trốn tìm" cảm xúc...',
+      jp: '現代の恋人たちも感情の「かくれんぼ」をしており、知恵が必要です...',
+      kr: '현대 연인들도 감정의 "숨바꼭질"을 하고 있으며 지혜가 필요합니다...',
+      'zh-tw': '瑪麗抱怨她的台灣男友總是「不明說」心裡的話。她想起寶玉的這句「你心裡到底有沒有我？」。她後來才明白，在東方文化中，直接問出口需要極大的勇氣。搞了半天，原來溫柔的暗示也是一種「真心」的表現。',
+      'zh-cn': '玛丽抱怨她的台湾男友总是“不明说”心里的话。她想起宝玉的这句“你心里到底有没有我？”。她后来才明白，在东方文化中，直接问出口需要极大的勇气。搞了半天，原来温柔的暗示也是一种“真心”的表现。'
+    }
   },
-  explanationPresent: {
-    en: 'However, in modern Taiwan, this phrase often brings pressure to young people. A popular modern saying is: "No marriage, no kids, a happy life."',
-    vn: 'Tuy nhiên, ở Đài Loan hiện đại, cụm từ này thường mang lại áp lực cho giới trẻ. Một câu nói hiện đại phổ biến là: "Không kết hôn, không sinh con, hạnh phúc cả đời."',
-    jp: 'しかし、現代の台湾では、この言葉は若者にプレッシャーを与えることがよくあります。最近では「結婚せず、産まず、幸せな一生」という言葉も流行っています。',
-    kr: '하지만 현대 대만에서는 이 말이 청년들에게 부담을 주는 경우가 많습니다. 현대 사회에서는 심지어 "결혼 안 하고 아이 안 낳는 것이 행복한 일생이다"라는 말도 유행합니다.',
-    'zh-tw': '但在現代台灣，這句話卻常帶給年輕人壓力。現代社會甚至流行說：「不婚不生，幸福一生」。',
-    'zh-cn': '但在现代台湾，这句话却常带给年轻人压力。现代社会甚至流行说：「不婚不生，幸福一生」。'
-  },
-  opinionTitle: {
-    en: 'What is your opinion?',
-    vn: 'Ý kiến của bạn là gì?',
-    jp: 'あなたはどう思いますか？',
-    kr: '당신의 의견은 무엇인가요?',
-    'zh-tw': '你對此有什麼看法？',
-    'zh-cn': '你对此有什么看法？'
-  },
-  placeholder: {
-    en: 'Share your thoughts... (e.g., Is it a blessing or pressure?)',
-    vn: 'Chia sẻ suy nghĩ của bạn... (Ví dụ: Bạn thấy đây là lời chúc hay áp lực?)',
-    jp: '考えを共有してください...（例：これは祝福ですか、それともプレッシャーですか？）',
-    kr: '의견을 공유해주세요... (예: 이 말이 축복이라고 생각하시나요, 부담이라고 생각하시나요?)',
-    'zh-tw': '分享你的意見... (例如：你覺得這句話是祝福還是壓力？)',
-    'zh-cn': '分享你的意见... (例如：你觉得这句话是祝福还是压力？)'
-  },
-  submitBtn: {
-    en: 'Submit My View',
-    vn: 'Gửi ý kiến của tôi',
-    jp: '意見を送信する',
-    kr: '의견 보내기',
-    'zh-tw': '送出我的看法',
-    'zh-cn': '送出我的看法'
-  },
-  thanks: {
-    en: 'Thanks for sharing!',
-    vn: 'Cảm ơn bạn đã chia sẻ!',
-    jp: '共有ありがとうございます！',
-    kr: '공유해주셔서 감사합니다!',
-    'zh-tw': '感謝你的分享！',
-    'zh-cn': '感谢你的分享！'
+  {
+    id: 'chapter4',
+    title: { en: 'Chapter 4: Iron-Faced Fairness', vn: 'Công bằng sắt đá', jp: '鉄の公平さ', kr: '철의 공정함', 'zh-tw': '第四回：探春理財與職場的鐵面無私', 'zh-cn': '第四回：探春理财与职场的铁面无私' },
+    classicText: "「凡事都要有個規矩。若是沒了規矩，這家子就不成家子了。」",
+    modernExplanation: {
+      en: 'Tanchun introduces modern-like management reforms, prioritizing rules over favoritism.',
+      vn: 'Thám Xuân giới thiệu các cải cách quản lý, ưu tiên quy tắc.',
+      jp: '探春は、贔屓よりも規則を優先する、現代のような管理改革を導入しました。',
+      kr: '탐춘은 편애보다 규칙을 우선시하는 현대적인 관리 개혁을 도입했습니다.',
+      'zh-tw': '賈探春是一個很有管理頭腦的人。在混亂的賈府裡，她堅持「按規矩辦事」，甚至不給親戚面子。這在講究「人情」的環境中非常不容易。',
+      'zh-cn': '贾探春是一个很有管理头脑的人。在混乱的贾府里，她坚持“按规矩办事”，甚至不给亲戚面子。这在讲究“人情”的环境中非常不容易。'
+    },
+    videoUrl: "Xf6ANQc6aVM", // Placeholder
+    contrast: {
+      ancient: { en: 'Favoritism and human interest drive systems.', vn: 'Ân huệ và quan hệ định hình hệ thống.', jp: '贔屓と人情がシステムを動かします。', kr: '편애와 인정이 시스템을 움직입니다.', 'zh-tw': '古代：關係好的人可以不守規矩，造成組織混亂。', 'zh-cn': '古代：关系好的人可以不守规矩，造成组织混乱。' },
+      modern: { en: 'SOPs and institutional transparency are key.', vn: 'SOP và sự minh bạch là chìa khóa.', jp: 'SOPと制度の透明性が鍵です。', kr: 'SOP와 제도의 투명성이 핵심입니다.', 'zh-tw': '現代：標準作業程序 (SOP) 重於個人關係，效率第一。', 'zh-cn': '现代：标准作业程序 (SOP) 重于个人关系，效率第一。' }
+    },
+    vocab: [
+      { word: '鐵面無私', meaning: { en: 'Impartial/Strictly fair', vn: 'Thiết diện vô tư', jp: '鉄面無私', kr: '철면무사', 'zh-tw': '做事很公平，不看感情。', 'zh-cn': '做事很公平，不看感情。' } },
+      { word: '制度', meaning: { en: 'System/Institution', vn: 'Chế độ', jp: '制度', kr: '제도', 'zh-tw': '大家都要遵守的規定。', 'zh-cn': '大家都要遵守的规定。' } },
+      { word: '按部就班', meaning: { en: 'Step by step/Following order', vn: 'Theo bộ tựu ban', jp: '順序立てて', kr: '절차대로', 'zh-tw': '照著一定的順序做事。', 'zh-cn': '照着一定的顺序做事。' } },
+      { word: '落實', meaning: { en: 'Implement/Ensure', vn: 'Thực hiện', jp: '実行する', kr: '실천하다', 'zh-tw': '真正做到，而不只是說說。', 'zh-cn': '真正做到，而不只是说说。' } },
+      { word: '原則', meaning: { en: 'Principle', vn: 'Nguyên tắc', jp: '原則', kr: '원칙', 'zh-tw': '說話做事的基本準則。', 'zh-cn': '说话做事的基本准则。' } }
+    ],
+    grammar: [
+      { point: '「若是...就...」', usage: { en: 'If... then...', vn: 'Nếu như... thì...', jp: 'もし…なら…', kr: '만약 ...라면 ...하다', 'zh-tw': '表達一種假設的邏輯推論。', 'zh-cn': '表达一种假设的逻辑推论。' } },
+      { point: '「凡是...都...」', usage: { en: 'Every/All...', vn: 'Mọi việc... đều...', jp: 'すべて…は…', kr: '모든 ...은 ...하다', 'zh-tw': '表示沒有例外的全部。', 'zh-cn': '表示没有例外的全部。' } },
+      { point: '「...得一塌糊塗」', usage: { en: 'A total mess...', vn: '...đến mức rối loạn', jp: 'めちゃくちゃ…', kr: '엉망진창으로...', 'zh-tw': '誇張地形容非常混亂或糟糕的程度。', 'zh-cn': '夸张地形容非常混乱或糟糕的程度。' } },
+      { point: '「歸根結底...」', usage: { en: 'In the final analysis...', vn: 'Suy cho cùng...', jp: '結局のところ…', kr: '결국...', 'zh-tw': '用來引出最根本的原因。', 'zh-cn': '用来引出最根本的原因。' } },
+      { point: '「大不了...」', usage: { en: 'At worst...', vn: 'Cùng lắm là...', jp: 'たかが…', kr: '해봤자...', 'zh-tw': '表示面對最壞結果時的豁達態度。', 'zh-cn': '表示面对最坏结果时的豁达态度。' } }
+    ],
+    modernEssay: {
+      en: 'Modern managers in Asian firms balance "law" and "love", echoing Tanchun\'s reform spirit...',
+      vn: 'Các nhà quản lý hiện đại cân bằng "pháp" và "tình"...',
+      jp: '現代のマネージャーは「法」と「情」のバランスをとっています...',
+      kr: '현대 매니저들은 "법"과 "정"의 균형을 맞추고 있습니다...',
+      'zh-tw': '在現代的公司管理中，如果制度定得一塌糊塗，員工就不會努力工作。探春的故事告訴我們，凡是成功的組織都必須落實原則。雖然有人會覺得這樣太過鐵面無私，但歸根結底，公平才是職場生存最重要的大事。',
+      'zh-cn': '在现代的公司管理中，如果制度定得一塌糊涂，员工就不会努力工作。探春的故事告诉我们，凡是成功的组织都必须落实原则。虽然有人会觉得这样太过铁面无私，但归根结底，公平才是职场生存最重要的大事。'
+    }
   }
-};
-
-export const FAMILY_MEMBERS: FamilyMember[] = [
-  { id: 'f1', name: '賈母', family: 'Jia', role: 'blood', generation: 1, relation: { en: 'Supreme Matriarch', vn: 'Lão tổ tông', jp: '最高権威者', kr: '가문의 최고 어른', 'zh-tw': '老祖宗。', 'zh-cn': '老祖宗。' }, description: { en: 'The ultimate authority in the Jia family, she deeply loves her grandson Baoyu.', vn: 'Người có quyền lực cao nhất trong gia đình họ Giả, bà rất yêu thương cháu nội Bảo Ngọc.', jp: 'ジャ家の最高権威者で、孫の宝玉をとても可愛がっています。', kr: '가씨 가문의 최고 권위자이며 손자 보옥을 매우 아낍니다.', 'zh-tw': '她是全家地位最高的人，非常疼愛孫子寶玉。', 'zh-cn': '她是全家地位最高的人，非常疼愛孫子寶玉。' } },
-  { id: 'f2', name: '賈寶玉', family: 'Jia', role: 'blood', generation: 3, relation: { en: 'The Main Character', vn: 'Nhân vật chính', jp: '主人公', kr: '주인공', 'zh-tw': '男主角。', 'zh-cn': '男主角。' }, description: { en: 'Born with a jade in his mouth, he dislikes official duties and loves beautiful things.', vn: 'Sinh ra đã ngậm ngọc, anh không thích làm quan, chỉ thích những điều tốt đẹp.', jp: '玉をくわえて生まれた男の子で、官職を嫌い、美しいものだけを好みます。', kr: '옥을 입에 물고 태어난 소년으로, 관직을 싫어하고 아름다운 것들만 좋아합니다.', 'zh-tw': '含著玉出生的男孩子，他不喜歡當官，只喜歡美好的事物。', 'zh-cn': '含著玉出生的男孩子，他不喜歡當官，只喜歡美好的事物。' } },
-  { id: 'f3', name: '林黛玉', family: 'Lin', role: 'blood', generation: 3, relation: { en: 'The Female Lead', vn: 'Nữ chính', jp: 'ヒロイン', kr: '여주인공', 'zh-tw': '女主角。', 'zh-cn': '女主角。' }, description: { en: 'Extremely talented but sensitive and easily saddened.', vn: 'Vô cùng tài hoa nhưng tâm hồn nhạy cảm, dễ u sầu.', jp: '非常に才能がありますが、繊細で傷つきやすい女の子です。', kr: '재능이 뛰어나지만 마음이 여리고 쉽게 슬퍼하는 소녀입니다.', 'zh-tw': '非常有才華但心思細膩、容易傷心的女孩子。', 'zh-cn': '非常有才華但心思細膩、容易傷心的女孩子。' } }
 ];
 
-export const STORIES: Story[] = [
-  { id: 's1', title: { en: 'I. Staying Cautious: Daiyu Enters the Mansion', vn: 'I. Cẩn trọng: Lâm Đại Ngọc vào phủ họ Giả', jp: 'I. 慎重に：黛玉、ジャ府に入る', kr: 'I. 조심스럽게: 대옥이 가부로 들어감', 'zh-tw': '一、寄人籬下：林黛玉進賈府', 'zh-cn': '一、寄人篱下：林黛玉进贾府' }, content: { en: 'Young Lin Daiyu arrives at the grand Mansion. She is extremely cautious, remembering the advice: "Do not say a word too much."', vn: 'Lâm Đại Ngọc mồ côi mẹ, được đón về Giả phủ. Cô vô cùng cẩn trọng, nhớ lời dặn: "Không nói thừa một lời".', jp: '母を亡くした黛玉は、豪華なジャ府に到着します。「一言も多く言わない」という慎重な振る舞いをします。', kr: '어머니를 여읜 대옥이 가씨 가문에 도착합니다. 말 한마디도 아끼라는 충고를 되새깁니다.', 'zh-tw': '自幼喪母的林黛玉步入榮國府，步步留心，時時在意。她謹記教誨：「不可多說一句話，不可多走一步路」。', 'zh-cn': '自幼丧母的林黛玉步入荣国府，步步留心，时时在意。她谨记教诲：「不可多说一句话，不可多走一步路」。' }, culturalLesson: { en: 'In high-context culture, careful observation and speech are keys to fitting in.', vn: 'Trong văn hóa ngữ cảnh cao, quan sát tỉ mỉ và cẩn trọng lời nói là chìa khóa để hòa nhập.', jp: 'ハイコンテクスト文化では、細かな観察と言葉選びが社会に溶け込む鍵となります。', kr: '고맥락 문화에서는 미세한 관찰과 신중한 언행이 사회에 적응하는 핵심입니다.', 'zh-tw': '在高語境文化中，細微的觀察與謹言慎行是融入社會的關鍵。', 'zh-cn': '在高语境文化中，細微的觀察與謹言慎行是融入社會的關鍵。' } },
-  { id: 's2', title: { en: 'II. Golden Match: Baochai Arrives', vn: 'II. Mối duyên vàng ngọc: Bảo Thoa đến', jp: 'II. 金玉の縁：寶釵の到来', kr: 'II. 금옥의 인연: 보차의 도착', 'zh-tw': '二、金玉良緣：薛寶釵的到來', 'zh-cn': '二、金玉良缘：薛宝钗の到来' }, content: { en: 'The elegant Xue Baochai arrives with a golden locket. Rumors spread that it must match Baoyu\'s jade, pressuring Daiyu.', vn: 'Tiết Bảo Thoa đoan trang mang theo chiếc khóa vàng đến, mọi người đồn rằng "khóa vàng phải đi với ngọc", gây áp lực cho Đại Ngọc.', jp: '端正な寶釵が金の首飾りを持って現れ、寶玉の玉との縁が噂されます。これが黛玉の壓力になります。', kr: '단정하고 우아한 보차가 금노리개를 가지고 오자 소문이 돕니다. 대옥에게는 압박이 됩니다.', 'zh-tw': '端莊大方的薛寶釵帶著金鎖來到賈府，眾人傳言「金鎖要配有玉的」，這給了敏感的黛玉巨大的壓力。', 'zh-cn': '端庄大方的薛宝钗带着金锁来到贾府，众人传言「金锁要配有玉的」，这给了敏感的黛玉巨大的壓力。' }, culturalLesson: { en: 'In traditional society, family interests often outweigh individual romance.', vn: 'Trong xã hội truyền thống, lợi ích gia đình thường cao hơn tình cảm cá nhân.', jp: '伝統社会では、個人の感情よりも家族の利益が優先されることが多いです。', kr: '전통 사회에서는 가족의 이익이 개인의 감정 추구보다 우선시되곤 합니다.', 'zh-tw': '傳統社會中，家族的利益往往高於個人的情感追求。', 'zh-cn': '傳統社會中，家族的利益往往高於個人的情感追求。' } }
-];
-
-export const CRISES: CrisisDilemma[] = [
-  { id: 'c1', topic: { en: 'Praise and "Face"', vn: 'Khen ngợi và "Thể diện"', jp: '賞賛と「面子」', kr: '칭찬과 "체면"', 'zh-tw': '情境一：稱讚與面子', 'zh-cn': '情境一：称赞与面子' }, theoryName: { en: 'Face Theory', vn: 'Lý thuyết Thể diện', jp: '面子理論', kr: '체면 이론', 'zh-tw': '面子理論', 'zh-cn': '面子理论' }, theorySimpleDesc: { en: 'Praise gives "face" but is also an evaluation.', vn: 'Khen ngợi là trao "thể diện", nhưng cũng là một sự đánh giá.', jp: '賞賛は相手に「面子」を与えますが、同時に一種の「評価」でもあります。', kr: '칭찬은 상대에게 "체면"을 세워주는 것이지만, 동시에 일종의 "평가"이기도 합니다.', 'zh-tw': '稱讚是給對方「面子」，也是一種「評價」。', 'zh-cn': '稱讚是給對方「面子」，也是一種「評價」。' }, context: { en: 'Grandmother Jia praises Daiyu as "Like a person in a painting."', vn: 'Giả mẫu khen Đại Ngọc "giống như người trong tranh vậy".', jp: 'ジャ家のおばあさんが黛玉を「絵から抜け出したようだ」と褒めます。', kr: '가씨 할머니가 대옥을 "마치 그림 속 사람 같다"고 칭찬합니다.', 'zh-tw': '賈母稱讚黛玉「像個畫裡的人兒似的」。', 'zh-cn': '賈母稱讚黛玉「像個畫裡的人兒似的」。' }, crisisExplanation: { en: 'Being praised means your actions are being "scored".', vn: 'Được khen ngợi có nghĩa là mọi hành động của bạn đang được "chấm điểm".', jp: '褒められるということは、あなたの一挙手一投足が「採点」されていることを意味します。', kr: '칭찬을 받는다는 것은 당신의 일거수일투족이 "평가"받고 있음을 의미합니다.', 'zh-tw': '稱讚代表你的一舉一動正在被「評分」。', 'zh-cn': '稱讚代表你的一舉一動正在被「評分」。' }, positiveView: { en: 'Friendliness.', vn: 'Sự thân thiện.', jp: '親しみやすさ。', kr: '우호적임.', 'zh-tw': '對方在表達友好。', 'zh-cn': '對方在表達友好。' }, negativeView: { en: 'Pressure.', vn: 'Áp lực.', jp: 'プレッシャー。', kr: '압박감.', 'zh-tw': '感覺自己被盯著看。', 'zh-cn': '感覺自己被盯著看。' }, discussionQuestion: { en: 'Do you feel awkward when praised?', vn: 'Bạn có cảm thấy khó xử khi được khen không?', jp: '褒められたとき、気まずく感じますか？', kr: '칭찬을 받을 때 어색함을 느끼나요?', 'zh-tw': '被稱讚時，你會尷尬嗎？', 'zh-cn': '被稱讚時，你會尷尬嗎？' } }
-];
-
-export const PROVERBS: PhraseEntry[] = [
-  { id: 'p1', phrase: '三思而後行', literal: { en: 'Think three times before acting.', vn: 'Nghĩ ba lần rồi hãy làm.', jp: '行う前に三度考えよ。', kr: '행동하기 전에 세 번 생각하라.', 'zh-tw': '做事以前，多想三次。', 'zh-cn': '做事以前，多想三次。' }, hidden: { en: 'Do not rush, think carefully.', vn: 'Đừng vội vàng, hãy suy nghĩ kỹ.', jp: '急がず、じっくり考えて。', kr: '서두르지 말고 천천히 생각하라.', 'zh-tw': '不要急，慢慢想。', 'zh-cn': '不要急，慢慢想。' }, example: '做事要三思而後行。' }
-];
-
-export const DAILY_PHRASES: PhraseEntry[] = [
-  { id: 'd1', phrase: '改天再約吧', literal: { en: 'Let\'s meet another day.', vn: 'Hôm khác hẹn lại nhé.', jp: 'またいつか会いましょう。', kr: '다음에 다시 만나요.', 'zh-tw': '換個時間再見。', 'zh-cn': '换个時間再見。' }, hidden: { en: 'Polite refusal: "I don\'t want to go now."', vn: 'Từ chối lịch sự: "Bây giờ tôi không muốn đi".', jp: '丁寧な拒絶：「今は行きたくない」という意味です。', kr: '정중한 거절: "지금은 가고 싶지 않다"는 뜻입니다.', 'zh-tw': '意思就是：我現在不想去。', 'zh-cn': '意思就是：我現在不想去。' }, example: 'A: 明天去玩嗎？ B: 改天再約吧。' }
-];
+export const FORM_IFRAME = `<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc9vRFKEnXZC_tTlQZCnFI9tnLgpiCUShwD4ZNiw-3zrSvcBA/viewform?embedded=true" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">載入中…</iframe>`;

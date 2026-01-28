@@ -1,31 +1,47 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta name="theme-color" content="#8b0000">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="manifest" href="./manifest.json">
-    <title>歡迎來到學習天地 - 跨文化溝通教室</title>
+    <title>紅樓語境教室 - 跨文化學習平台</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-red: #8b0000;
+            --primary-gold: #d4af37;
+            --bg-cream: #fcf9f2;
+        }
         body {
-            font-family: 'Noto Sans TC', sans-serif;
-            background-color: #fcf9f2;
+            font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-cream);
             color: #1a1a1a;
             margin: 0;
             padding: 0;
+            -webkit-font-smoothing: antialiased;
             -webkit-tap-highlight-color: transparent;
+            text-rendering: optimizeLegibility;
         }
         h1, h2, h3, .font-serif {
             font-family: 'Noto Serif TC', serif;
+            letter-spacing: -0.02em;
         }
-        /* 避免白屏：先給 root 一個預設高度 */
         #root {
             min-height: 100vh;
+        }
+        /* 優化行動端長按與選取色 */
+        ::selection {
+            background-color: var(--primary-red);
+            color: white;
+        }
+        /* 平滑滾動 */
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 <script type="importmap">

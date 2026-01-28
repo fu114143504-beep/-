@@ -1,20 +1,13 @@
 
 import React, { useState, useEffect, useRef } from 'react';
-import { AppView, Language, FamilyMember } from './types';
-import { FAMILY_MEMBERS, STORIES, CRISES, DAILY_PHRASES, PROVERBS, HOME_CONTENT, HOME_ANALYSIS } from './constants';
+import { AppView, Language, ChapterContent } from './types';
+import { NAV_LABELS, HOME_CONTENT, CHAPTERS, FORM_IFRAME } from './constants';
 import Navigation from './components/Navigation';
 
 const App: React.FC = () => {
   const [view, setView] = useState<AppView>('home');
   const [lang, setLang] = useState<Language>('zh-tw');
-  const [selectedMember, setSelectedMember] = useState<FamilyMember | null>(null);
-  const [opinion, setOpinion] = useState('');
-  const [submitted, setSubmitted] = useState(false);
-  
   const mainRef = useRef<HTMLElement>(null);
-
-  // 影片 ID：Xf6ANQc6aVM (早生貴子)
-  const VIDEO_ID = "Xf6ANQc6aVM";
 
   useEffect(() => {
     if (mainRef.current) {
@@ -22,214 +15,183 @@ const App: React.FC = () => {
     }
   }, [view]);
 
-  const handleOpinionSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (opinion.trim()) {
-      setSubmitted(true);
-      setOpinion('');
-      setTimeout(() => setSubmitted(false), 3000);
-    }
-  };
-
   const renderLanguageSwitcher = () => (
-    <div className="fixed top-2 right-2 z-[100] flex flex-wrap gap-1 bg-white/95 backdrop-blur p-1.5 rounded-xl shadow-lg border border-[#d4af37]">
-      {[
-        { id: 'en', label: 'EN' },
-        { id: 'vn', label: 'VN' },
-        { id: 'jp', label: 'JP' },
-        { id: 'kr', label: 'KR' },
-        { id: 'zh-tw', label: '繁' },
-        { id: 'zh-cn', label: '簡' }
-      ].map((l) => (
+    <div className="fixed top-3 right-3 z-[100] flex flex-wrap gap-1 bg-white/90 backdrop-blur-md p-1.5 rounded-xl shadow-lg border border-[#d4af37]/50">
+      {['en', 'vn', 'jp', 'kr', 'zh-tw', 'zh-cn'].map((l) => (
         <button
-          key={l.id}
-          onClick={() => setLang(l.id as Language)}
-          className={`px-2 py-1 rounded-lg text-[10px] font-black transition-all ${
-            lang === l.id 
-              ? 'bg-[#8b0000] text-white shadow-sm' 
-              : 'text-slate-400 hover:text-[#8b0000]'
+          key={l}
+          onClick={() => setLang(l as Language)}
+          className={`px-2.5 py-1 rounded-lg text-[10px] font-black transition-all ${
+            lang === l ? 'bg-[#8b0000] text-white shadow-md' : 'text-slate-400 hover:text-[#8b0000]'
           }`}
         >
-          {l.label}
+          {l.toUpperCase()}
         </button>
       ))}
     </div>
   );
 
   const renderHome = () => (
-    <div className="space-y-6 py-4 animate-in fade-in zoom-in duration-500">
-      {/* 標題區域：手機優化 */}
-      <div className="bg-[#8b0000] rounded-[1.5rem] p-6 md:p-12 text-[#f5e6d3] shadow-xl border-2 border-[#d4af37] relative overflow-hidden flex flex-col items-center text-center">
-         <h1 className="text-2xl md:text-5xl font-[900] mb-3 leading-tight px-4">
-            {HOME_CONTENT.title[lang]}
+    <div className="space-y-6 md:space-y-10 animate-in fade-in zoom-in duration-500 pb-10">
+      {/* 英雄區塊 */}
+      <div className="bg-[#8b0000] rounded-[2rem] p-8 md:p-20 text-[#f5e6d3] shadow-2xl border-4 border-[#d4af37] text-center relative overflow-hidden">
+         <div className="absolute top-0 left-0 p-4 md:p-8 text-7xl md:text-9xl opacity-5 font-serif font-black select-none pointer-events-none transform -rotate-12">教</div>
+         <h1 className="text-3xl md:text-7xl font-black mb-4 md:mb-8 leading-tight z-10 relative font-serif text-balance px-2">
+           {HOME_CONTENT.title[lang]}
          </h1>
-         <div className="w-10 h-1 bg-[#d4af37] mb-4 rounded-full opacity-50"></div>
-         <p className="text-sm md:text-xl font-medium opacity-90 max-w-2xl leading-relaxed px-4">
+         <div className="w-12 md:w-20 h-1.5 md:h-2.5 bg-[#d4af37] mx-auto mb-6 md:mb-10 rounded-full"></div>
+         <p className="text-sm md:text-2xl font-medium opacity-90 leading-relaxed max-w-2xl mx-auto z-10 relative px-4 text-pretty">
            {HOME_CONTENT.subtitle[lang]}
          </p>
-         <div className="absolute -bottom-2 -right-2 text-[80px] opacity-5 font-black pointer-events-none select-none">學</div>
+         <div className="absolute bottom-0 right-0 p-4 md:p-8 text-7xl md:text-9xl opacity-5 font-serif font-black select-none pointer-events-none transform rotate-12">學</div>
+      </div>
+      
+      {/* 章節卡片網格 */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 px-2 md:px-0">
+        {CHAPTERS.map(ch => (
+          <button 
+            key={ch.id} 
+            onClick={() => setView(ch.id)} 
+            className="group bg-white p-6 md:p-10 rounded-[1.5rem] md:rounded-[2.5rem] shadow-md border-t-8 border-[#8b0000] text-left hover:shadow-2xl hover:-translate-y-1 transition-all active:scale-95 relative overflow-hidden"
+          >
+             <div className="absolute top-4 right-4 text-4xl md:text-6xl opacity-5 group-hover:opacity-10 transition-opacity">🏮</div>
+             <div className="mb-2 inline-block px-2 py-0.5 bg-slate-100 rounded text-[10px] text-slate-500 font-bold uppercase tracking-wider">{NAV_LABELS[ch.id][lang]}</div>
+             <h3 className="text-lg md:text-2xl font-black text-[#8b0000] mb-2 font-serif leading-tight">{ch.title[lang]}</h3>
+             <p className="text-xs md:text-base text-slate-500 line-clamp-2 leading-relaxed font-medium italic mb-4">
+               {ch.modernExplanation[lang]}
+             </p>
+             <div className="flex items-center text-[#8b0000] font-black text-[10px] md:text-xs uppercase tracking-[0.2em] group-hover:translate-x-2 transition-all">
+               進入課程 <span className="ml-2 text-base">→</span>
+             </div>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+
+  const renderChapter = (ch: ChapterContent) => (
+    <div className="space-y-8 md:space-y-12 animate-in fade-in slide-in-from-bottom-5 duration-500 pb-24 px-1 md:px-0">
+      {/* 1. 原文頭部區塊 */}
+      <div className="bg-[#8b0000] p-6 md:p-16 rounded-[1.5rem] md:rounded-[3rem] shadow-xl border-b-4 md:border-b-8 border-[#d4af37] flex flex-col items-center text-center text-[#f5e6d3] relative">
+        <div className="text-[10px] font-black uppercase tracking-[0.3em] opacity-60 mb-4">{NAV_LABELS[ch.id][lang]}</div>
+        <h2 className="text-xl md:text-5xl font-black mb-6 md:mb-10 font-serif leading-snug px-2 text-balance">{ch.title[lang]}</h2>
+        <div className="w-full bg-white/10 backdrop-blur-md p-6 md:p-12 rounded-2xl md:rounded-[2.5rem] border-2 border-dashed border-[#d4af37]/40">
+          <p className="text-lg md:text-4xl font-serif font-black leading-relaxed italic text-balance">
+            「{ch.classicText}」
+          </p>
+          <div className="mt-4 text-[9px] md:text-xs font-bold uppercase tracking-widest opacity-50">—— 摘自《紅樓夢》</div>
+        </div>
       </div>
 
-      {/* 影音與互動區域 */}
-      <div className="bg-white p-5 md:p-10 rounded-[1.5rem] shadow-lg border-t-4 border-[#d4af37] space-y-6 relative">
-        <div className="text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-50 text-amber-700 text-[10px] font-bold rounded-full border border-amber-200 uppercase tracking-tighter">
-            <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
-            {HOME_ANALYSIS.badge[lang]}
-          </div>
-          <h2 className="text-lg md:text-2xl font-black text-[#8b0000] mt-3">
-            {HOME_ANALYSIS.caseStudyTitle[lang]}
-          </h2>
+      {/* 2. 解說與影片 */}
+      <div className="bg-white p-6 md:p-16 rounded-[1.5rem] md:rounded-[3rem] shadow-lg space-y-8 md:space-y-12 border border-slate-100">
+        <div className="border-l-4 md:border-l-8 border-[#d4af37] pl-5 md:pl-10">
+          <h4 className="text-[10px] md:text-sm font-black text-slate-400 uppercase tracking-[0.2em] mb-2 md:mb-4">語境深度剖析</h4>
+          <p className="text-base md:text-3xl text-slate-800 leading-relaxed md:leading-snug font-serif font-bold text-pretty">
+            {ch.modernExplanation[lang]}
+          </p>
         </div>
+        
+        {/* 影片區域 */}
+        <div className="relative aspect-[16/9] bg-black rounded-2xl md:rounded-[2.5rem] overflow-hidden shadow-2xl border-2 md:border-8 border-[#f5e6d3] w-full max-w-5xl mx-auto">
+           <iframe 
+             className="absolute inset-0 w-full h-full"
+             src={`https://www.youtube.com/embed/${ch.videoUrl}?modestbranding=1&rel=0&controls=1`} 
+             title="Lesson Video"
+             frameBorder="0" 
+             allowFullScreen
+           ></iframe>
+        </div>
+      </div>
 
-        {/* 影片 */}
-        <div className="relative group mx-auto max-w-[260px] md:max-w-xs">
-           <div className="relative aspect-[9/16] bg-black rounded-[1.5rem] overflow-hidden shadow-2xl border-[4px] border-[#f5e6d3]">
-             <iframe 
-               className="absolute inset-0 w-full h-full"
-               src={`https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&mute=1&loop=1&playlist=${VIDEO_ID}&rel=0&modestbranding=1&controls=1&enablejsapi=1`} 
-               title="跨文化對話範例"
-               frameBorder="0" 
-               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-               referrerPolicy="strict-origin-when-cross-origin"
-               allowFullScreen
-             ></iframe>
+      {/* 3. 價值觀對比 */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
+        <div className="bg-[#fdfbf7] p-6 md:p-12 rounded-[1.5rem] md:rounded-[2.5rem] border border-[#d4af37]/30 shadow-sm">
+           <div className="flex items-center gap-3 mb-4">
+             <span className="text-xl md:text-3xl">🏛️</span>
+             <h4 className="text-[#8b0000] font-black uppercase tracking-widest text-[10px] md:text-xs">古代價值觀</h4>
            </div>
+           <p className="text-sm md:text-xl font-bold text-slate-700 leading-relaxed md:leading-loose">{ch.contrast.ancient[lang]}</p>
         </div>
+        <div className="bg-blue-50 p-6 md:p-12 rounded-[1.5rem] md:rounded-[2.5rem] border border-blue-100 shadow-sm">
+           <div className="flex items-center gap-3 mb-4">
+             <span className="text-xl md:text-3xl">📱</span>
+             <h4 className="text-blue-800 font-black uppercase tracking-widest text-[10px] md:text-xs">現代價值觀</h4>
+           </div>
+           <p className="text-sm md:text-xl font-bold text-slate-700 leading-relaxed md:leading-loose">{ch.contrast.modern[lang]}</p>
+        </div>
+      </div>
 
-        {/* 解說文字 */}
-        <div className="bg-slate-50 p-5 rounded-xl border-l-4 border-[#8b0000] space-y-3">
-          <p className="text-sm md:text-base text-slate-700 leading-relaxed">
-            {HOME_ANALYSIS.explanationPast[lang]}
-          </p>
-          <p className="text-sm md:text-base text-slate-700 leading-relaxed font-bold">
-            {HOME_ANALYSIS.explanationPresent[lang]}
-          </p>
+      {/* 4. 語言學習網格 */}
+      <div className="space-y-6 md:space-y-10">
+        <div className="flex items-center gap-3 md:gap-5 px-2">
+          <div className="h-6 md:h-12 w-1.5 md:w-3 bg-[#8b0000] rounded-full"></div>
+          <h3 className="text-xl md:text-4xl font-black text-[#8b0000] font-serif">語言學習中心</h3>
         </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10">
+          {/* 生詞卡 */}
+          <div className="bg-white p-6 md:p-12 rounded-[1.5rem] md:rounded-[3rem] shadow-xl border-t-8 border-emerald-500">
+             <h4 className="font-black text-emerald-700 mb-6 md:mb-10 flex items-center gap-3 text-lg md:text-2xl">
+               <span className="bg-emerald-100 p-2 rounded-xl text-xl">🌟</span> 現代實用生詞
+             </h4>
+             <ul className="space-y-4 md:space-y-8">
+               {ch.vocab.map((v, i) => (
+                 <li key={i} className="flex flex-col border-b border-slate-50 pb-4 last:border-0">
+                   <span className="font-black text-lg md:text-3xl text-slate-800 hover:text-emerald-600 transition-colors cursor-default">{v.word}</span>
+                   <span className="text-slate-500 text-xs md:text-base mt-1 md:mt-3 font-medium leading-relaxed">{v.meaning[lang]}</span>
+                 </li>
+               ))}
+             </ul>
+          </div>
+          
+          {/* 語法卡 */}
+          <div className="bg-white p-6 md:p-12 rounded-[1.5rem] md:rounded-[3rem] shadow-xl border-t-8 border-indigo-500">
+             <h4 className="font-black text-indigo-700 mb-6 md:mb-10 flex items-center gap-3 text-lg md:text-2xl">
+               <span className="bg-indigo-100 p-2 rounded-xl text-xl">⚙️</span> 跨文化語法點
+             </h4>
+             <ul className="space-y-6 md:space-y-10">
+               {ch.grammar.map((g, i) => (
+                 <li key={i} className="bg-slate-50 p-4 md:p-8 rounded-xl md:rounded-[2rem] border-l-4 border-indigo-200">
+                   <p className="font-black text-slate-800 text-base md:text-2xl mb-2 md:mb-4">{g.point}</p>
+                   <p className="text-slate-500 text-[11px] md:text-lg leading-relaxed font-medium">{g.usage[lang]}</p>
+                 </li>
+               ))}
+             </ul>
+          </div>
+        </div>
+      </div>
 
-        {/* 意見收集框 */}
-        <div className="mt-8 pt-6 border-t border-slate-100">
-          <h3 className="text-base font-black text-slate-800 mb-4 text-center">
-            {HOME_ANALYSIS.opinionTitle[lang]}
-          </h3>
-          <form onSubmit={handleOpinionSubmit} className="space-y-4">
-            <textarea 
-              value={opinion}
-              onChange={(e) => setOpinion(e.target.value)}
-              placeholder={HOME_ANALYSIS.placeholder[lang]}
-              className="w-full p-4 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-[#8b0000] focus:border-transparent outline-none min-h-[100px] resize-none"
-            />
-            <button 
-              type="submit"
-              disabled={!opinion.trim()}
-              className="w-full bg-[#8b0000] text-white py-3 rounded-xl font-bold text-sm shadow-md hover:bg-[#a50000] active:scale-95 transition-all disabled:opacity-50"
-            >
-              {submitted ? HOME_ANALYSIS.thanks[lang] : HOME_ANALYSIS.submitBtn[lang]}
-            </button>
-          </form>
+      {/* 5. 現代場景閱讀 */}
+      <div className="bg-[#1a1a1a] text-[#f5e6d3] p-8 md:p-20 rounded-[1.5rem] md:rounded-[4rem] shadow-2xl relative overflow-hidden border-b-[8px] md:border-b-[16px] border-[#d4af37]">
+         <div className="absolute top-4 right-4 text-6xl md:text-[15rem] opacity-5 font-serif pointer-events-none select-none italic">"</div>
+         <h3 className="text-[#d4af37] font-black mb-6 md:mb-10 uppercase text-[10px] md:text-xs tracking-[0.4em]">沉浸式場景閱讀</h3>
+         <p className="text-lg md:text-3xl leading-relaxed md:leading-loose italic opacity-95 font-serif text-pretty">
+           <span className="text-4xl md:text-7xl font-black text-[#d4af37] float-left mr-3 md:mr-6 leading-none mt-1">「</span>
+           {ch.modernEssay[lang]}
+         </p>
+      </div>
+
+      {/* 6. 表單區塊 */}
+      <div className="mt-12 md:mt-24 pt-12 md:pt-24 border-t-4 border-dashed border-slate-200">
+        <div className="text-center mb-10 md:mb-16">
+          <h3 className="text-xl md:text-4xl font-black text-slate-800 font-serif mb-2">練習與反饋</h3>
+          <p className="text-xs md:text-lg text-slate-400 font-medium px-4">完成下方練習以加深印象。</p>
         </div>
+        <div className="bg-white rounded-[1.5rem] md:rounded-[3rem] shadow-2xl overflow-hidden border border-slate-100" dangerouslySetInnerHTML={{ __html: FORM_IFRAME }} />
       </div>
     </div>
   );
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row bg-[#fcf9f2] text-slate-900 pb-20 md:pb-0 font-serif overflow-x-hidden">
+    <div className="min-h-screen flex flex-col md:flex-row bg-[#fcf9f2] text-slate-900 pb-20 md:pb-0 font-sans overflow-x-hidden">
       <Navigation currentView={view} setView={setView} lang={lang} />
       {renderLanguageSwitcher()}
 
-      <main ref={mainRef} className="flex-1 w-full p-4 md:p-12 overflow-y-auto h-screen scroll-smooth">
-        <div className="max-w-4xl mx-auto">
+      <main ref={mainRef} className="flex-1 w-full p-4 md:p-16 overflow-y-auto h-screen scroll-smooth">
+        <div className="max-w-5xl mx-auto">
           {view === 'home' && renderHome()}
-
-          {view === 'family-tree' && (
-            <div className="space-y-6 py-4 animate-in slide-in-from-bottom-5 duration-700">
-              <div className="text-center">
-                <h2 className="text-2xl font-black text-[#8b0000] border-b-4 border-[#8b0000] inline-block pb-2">
-                  {lang === 'vn' ? 'Nhân vật tiêu biểu' : '紅樓人物卡'}
-                </h2>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {FAMILY_MEMBERS.map(m => (
-                  <div key={m.id} onClick={() => setSelectedMember(m)} className="bg-white p-5 rounded-xl shadow-md border border-slate-100 hover:scale-[1.02] transition-transform cursor-pointer group">
-                    <div className="text-3xl mb-2 group-hover:rotate-12 transition-transform">👤</div>
-                    <h3 className="text-lg font-black text-[#8b0000] mb-1">{m.name}</h3>
-                    <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">{m.relation[lang]}</p>
-                  </div>
-                ))}
-              </div>
-              {selectedMember && (
-                <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-[200] flex items-center justify-center p-6" onClick={() => setSelectedMember(null)}>
-                  <div className="bg-white p-6 rounded-2xl max-w-sm w-full relative shadow-2xl border-t-8 border-[#8b0000]" onClick={e => e.stopPropagation()}>
-                    <button onClick={() => setSelectedMember(null)} className="absolute top-4 right-4 text-2xl font-black text-slate-300 hover:text-red-500">✕</button>
-                    <h3 className="text-xl font-black text-[#8b0000] mb-4">{selectedMember.name}</h3>
-                    <p className="text-sm text-slate-700 leading-relaxed italic border-l-4 border-[#f5e6d3] pl-4">
-                      {selectedMember.description[lang]}
-                    </p>
-                  </div>
-                </div>
-              )}
-            </div>
-          )}
-
-          {view === 'stories' && (
-            <div className="space-y-8 py-4 animate-in fade-in duration-700">
-              <h2 className="text-2xl font-black text-[#8b0000] mb-2">📜 紅樓語境選讀</h2>
-              {STORIES.map(story => (
-                <div key={story.id} className="bg-white p-6 rounded-2xl shadow-lg border-l-8 border-[#8b0000]">
-                  <h3 className="text-lg font-black text-[#8b0000] mb-3">{story.title[lang]}</h3>
-                  <p className="text-base leading-relaxed text-slate-700 mb-4">{story.content[lang]}</p>
-                  <div className="bg-[#fdfbf7] p-4 rounded-lg border border-[#d4af37]">
-                    <p className="text-[10px] font-black text-[#d4af37] uppercase mb-1 tracking-widest">💡 文化導航</p>
-                    <p className="text-xs text-slate-600 font-bold italic">{story.culturalLesson[lang]}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {view === 'crisis' && (
-            <div className="space-y-6 py-4 animate-in fade-in duration-500">
-              <h2 className="text-2xl font-black text-[#8b0000] mb-2">⚖️ 文化危機分析</h2>
-              {CRISES.map(c => (
-                <div key={c.id} className="bg-white overflow-hidden rounded-2xl shadow-xl border border-slate-100">
-                  <div className="bg-[#8b0000] p-4 text-white text-lg font-bold">
-                     {c.topic[lang]}
-                  </div>
-                  <div className="p-6 space-y-4">
-                    <p className="text-base text-slate-700 bg-slate-50 p-4 rounded-xl border-l-4 border-[#8b0000] italic leading-relaxed">
-                      「{c.context[lang]}」
-                    </p>
-                    <div className="p-4 bg-red-50 rounded-xl border border-red-100">
-                      <h4 className="text-xs font-black text-[#8b0000] mb-1">關鍵解析</h4>
-                      <p className="text-sm text-slate-800 leading-relaxed font-semibold">{c.crisisExplanation[lang]}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {(view === 'proverbs' || view === 'daily') && (
-            <div className="space-y-4 py-4">
-              <h2 className="text-2xl font-black text-[#8b0000] mb-4">
-                {view === 'proverbs' ? '🏮 經典諺語' : '☕ 現代場景'}
-              </h2>
-              <div className="grid grid-cols-1 gap-3">
-                {(view === 'proverbs' ? PROVERBS : DAILY_PHRASES).map(item => (
-                  <div key={item.id} className="bg-white p-5 rounded-2xl shadow-md border border-slate-100 flex flex-col gap-3">
-                    <div className="border-b border-slate-100 pb-2">
-                      <p className="text-xl font-black text-[#8b0000] mb-1">{item.phrase}</p>
-                      <p className="text-xs text-slate-400 italic">"{item.literal[lang]}"</p>
-                    </div>
-                    <div>
-                       <p className="text-[10px] font-black text-[#d4af37] uppercase mb-1 tracking-widest">隱含深度</p>
-                       <p className="text-base font-black text-slate-800">{item.hidden[lang]}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
+          {CHAPTERS.map(ch => view === ch.id ? <div key={ch.id}>{renderChapter(ch)}</div> : null)}
         </div>
       </main>
     </div>

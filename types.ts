@@ -3,11 +3,10 @@ export type Language = 'en' | 'vn' | 'jp' | 'kr' | 'zh-tw' | 'zh-cn';
 
 export type AppView = 
   | 'home' 
-  | 'family-tree' 
-  | 'stories' 
-  | 'crisis' 
-  | 'proverbs' 
-  | 'daily';
+  | 'chapter1' 
+  | 'chapter2' 
+  | 'chapter3' 
+  | 'chapter4';
 
 export interface MultiLangText {
   en: string;
@@ -18,45 +17,33 @@ export interface MultiLangText {
   'zh-cn': string;
 }
 
-export interface FamilyMember {
-  id: string;
-  name: string;
-  family: 'Jia' | 'Lin' | 'Xue' | 'Shi' | 'Other';
-  role: 'blood' | 'spouse' | 'servant' | 'other';
-  generation: number; // 1: Elder, 2: Parents, 3: Main Generation, 4: Junior/Staff
-  relation: MultiLangText;
-  description: MultiLangText;
+export interface Vocabulary {
+  word: string;
+  meaning: MultiLangText;
 }
 
-export interface Story {
-  id: string;
+export interface Grammar {
+  point: string;
+  usage: MultiLangText;
+}
+
+export interface ChapterContent {
+  id: AppView;
   title: MultiLangText;
-  content: MultiLangText;
-  culturalLesson: MultiLangText;
+  classicText: string;
+  modernExplanation: MultiLangText;
+  videoUrl: string;
+  contrast: {
+    ancient: MultiLangText;
+    modern: MultiLangText;
+  };
+  vocab: Vocabulary[];
+  grammar: Grammar[];
+  modernEssay: MultiLangText;
 }
 
-export interface CrisisDilemma {
-  id: string;
-  topic: MultiLangText;
-  context: MultiLangText;
-  theoryName: MultiLangText;
-  theorySimpleDesc: MultiLangText;
-  crisisExplanation: MultiLangText;
-  positiveView: MultiLangText;
-  negativeView: MultiLangText;
-  discussionQuestion: MultiLangText;
-}
-
-export interface PhraseEntry {
-  id: string;
-  phrase: string;
-  literal: MultiLangText;
-  hidden: MultiLangText;
-  example: string;
-}
-
+// Fixed Error: Module '"../types"' has no exported member 'Scenario' in LessonCard.tsx
 export interface Scenario {
-  id: string;
   category: string;
   title: string;
   bookContext: string;
