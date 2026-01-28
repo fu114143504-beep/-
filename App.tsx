@@ -16,13 +16,13 @@ const App: React.FC = () => {
   }, [view]);
 
   const renderLanguageSwitcher = () => (
-    <div className="fixed top-3 right-3 z-[100] flex flex-wrap gap-1 bg-white/90 backdrop-blur-md p-1.5 rounded-xl shadow-lg border border-[#d4af37]/50">
+    <div className="fixed top-2 right-2 z-[100] flex flex-wrap gap-1 bg-[#fdfbf7]/90 backdrop-blur-md p-1 rounded-xl shadow-lg border-2 border-[#d4af37] max-w-[calc(100vw-80px)]">
       {['en', 'vn', 'jp', 'kr', 'zh-tw', 'zh-cn'].map((l) => (
         <button
           key={l}
           onClick={() => setLang(l as Language)}
-          className={`px-2.5 py-1 rounded-lg text-[10px] font-black transition-all ${
-            lang === l ? 'bg-[#8b0000] text-white shadow-md' : 'text-slate-400 hover:text-[#8b0000]'
+          className={`px-2 py-0.5 rounded-lg text-[9px] font-black transition-all ${
+            lang === l ? 'bg-[#8b0000] text-[#f5e6d3] shadow-md' : 'text-[#8b0000]/50 hover:text-[#8b0000]'
           }`}
         >
           {l.toUpperCase()}
@@ -32,41 +32,50 @@ const App: React.FC = () => {
   );
 
   const renderHome = () => (
-    <div className="space-y-6 md:space-y-10 animate-in fade-in zoom-in duration-500 pb-10">
+    <div className="space-y-8 md:space-y-12 animate-in fade-in zoom-in duration-700 pb-20">
       {/* 英雄區塊 */}
-      <div className="bg-[#8b0000] rounded-[2rem] p-8 md:p-20 text-[#f5e6d3] shadow-2xl border-4 border-[#d4af37] text-center relative overflow-hidden">
-         <div className="absolute top-0 left-0 p-4 md:p-8 text-7xl md:text-9xl opacity-5 font-serif font-black select-none pointer-events-none transform -rotate-12">教</div>
-         <h1 className="text-3xl md:text-7xl font-black mb-4 md:mb-8 leading-tight z-10 relative font-serif text-balance px-2">
-           {HOME_CONTENT.title[lang]}
-         </h1>
-         <div className="w-12 md:w-20 h-1.5 md:h-2.5 bg-[#d4af37] mx-auto mb-6 md:mb-10 rounded-full"></div>
-         <p className="text-base md:text-3xl font-medium opacity-90 leading-relaxed max-w-2xl mx-auto z-10 relative px-4 text-pretty">
-           {HOME_CONTENT.subtitle[lang]}
-         </p>
-         <div className="absolute bottom-0 right-0 p-4 md:p-8 text-7xl md:text-9xl opacity-5 font-serif font-black select-none pointer-events-none transform rotate-12">學</div>
+      <div className="relative group overflow-hidden rounded-[1.5rem] md:rounded-[2.5rem] shadow-2xl border-2 md:border-4 border-[#8b0000] bg-white p-0.5">
+        <div className="bg-[#8b0000] rounded-[1.4rem] md:rounded-[2.2rem] p-8 md:p-24 text-[#f5e6d3] text-center relative overflow-hidden corner-gold">
+           <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none" 
+                style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0L100 50L50 100L0 50Z' fill='none' stroke='%23d4af37' stroke-width='2'/%3E%3C/svg%3E")`, backgroundSize: '40px' }} />
+           
+           <h1 className="text-3xl md:text-8xl font-black mb-6 md:mb-8 leading-tight z-10 relative font-serif text-balance tracking-tight">
+             {HOME_CONTENT.title[lang]}
+           </h1>
+           <div className="flex items-center justify-center gap-3 md:gap-4 mb-8 z-10 relative">
+             <div className="h-px w-8 md:w-32 bg-[#d4af37]"></div>
+             <div className="text-sm md:text-3xl font-serif text-[#d4af37]">❂</div>
+             <div className="h-px w-8 md:w-32 bg-[#d4af37]"></div>
+           </div>
+           <p className="text-base md:text-4xl font-serif leading-relaxed max-w-3xl mx-auto z-10 relative px-2 md:px-4 opacity-95 text-balance">
+             {HOME_CONTENT.subtitle[lang]}
+           </p>
+        </div>
       </div>
 
-      {/* 首頁中間新增表單區塊 */}
-      <div className="bg-white rounded-[1.5rem] md:rounded-[3rem] shadow-xl overflow-hidden border border-slate-100 mx-2 md:mx-0">
-        <div dangerouslySetInnerHTML={{ __html: `<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc75cF3PjWYw3l9JdpU9tsSVWlUkpTxC56dU0ozEwBpbpwQmg/viewform?embedded=true" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0">載入中…</iframe>` }} />
+      {/* 首頁表單區塊 */}
+      <div className="lattice-container rounded-[1.5rem] md:rounded-[2rem] shadow-xl mx-0">
+        <div className="bg-white rounded-lg md:rounded-xl overflow-hidden shadow-inner">
+          <div dangerouslySetInnerHTML={{ __html: `<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc75cF3PjWYw3l9JdpU9tsSVWlUkpTxC56dU0ozEwBpbpwQmg/viewform?embedded=true" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0">載入中…</iframe>` }} />
+        </div>
       </div>
       
       {/* 章節卡片網格 */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 px-2 md:px-0">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 px-0">
         {CHAPTERS.map(ch => (
           <button 
             key={ch.id} 
             onClick={() => setView(ch.id)} 
-            className="group bg-white p-6 md:p-10 rounded-[1.5rem] md:rounded-[2.5rem] shadow-md border-t-8 border-[#8b0000] text-left hover:shadow-2xl hover:-translate-y-1 transition-all active:scale-95 relative overflow-hidden"
+            className="group bg-white p-6 md:p-12 rounded-[1.5rem] md:rounded-[2rem] shadow-lg border-2 border-[#8b0000]/10 border-t-[8px] md:border-t-[12px] border-t-[#8b0000] text-left hover:shadow-2xl hover:-translate-y-1 transition-all active:scale-95 relative overflow-hidden"
           >
-             <div className="absolute top-4 right-4 text-4xl md:text-6xl opacity-5 group-hover:opacity-10 transition-opacity">🏮</div>
-             <div className="mb-2 inline-block px-2 py-0.5 bg-slate-100 rounded text-[10px] text-slate-500 font-bold uppercase tracking-wider">{NAV_LABELS[ch.id][lang]}</div>
-             <h3 className="text-lg md:text-2xl font-black text-[#8b0000] mb-2 font-serif leading-tight">{ch.title[lang]}</h3>
-             <p className="text-sm md:text-lg text-slate-500 line-clamp-2 leading-relaxed font-medium italic mb-4">
+             <div className="mb-2 inline-block px-2 py-0.5 bg-[#8b0000]/5 text-[#8b0000] rounded-full text-[10px] font-black uppercase tracking-widest">{NAV_LABELS[ch.id][lang]}</div>
+             <h3 className="text-xl md:text-3xl font-black text-[#8b0000] mb-3 font-serif leading-tight text-balance">{ch.title[lang]}</h3>
+             <p className="text-sm md:text-xl text-slate-600 line-clamp-2 md:line-clamp-3 leading-relaxed font-serif italic mb-4 md:mb-6 text-justify-zh">
                {ch.modernExplanation[lang]}
              </p>
-             <div className="flex items-center text-[#8b0000] font-black text-[10px] md:text-xs uppercase tracking-[0.2em] group-hover:translate-x-2 transition-all">
-               進入課程 <span className="ml-2 text-base">→</span>
+             <div className="flex items-center text-[#8b0000] font-black text-[10px] uppercase tracking-[0.2em]">
+               <span>研習此回</span>
+               <span className="ml-2 text-base">→</span>
              </div>
           </button>
         ))}
@@ -75,91 +84,84 @@ const App: React.FC = () => {
   );
 
   const renderChapter = (ch: ChapterContent) => (
-    <div className="space-y-8 md:space-y-12 animate-in fade-in slide-in-from-bottom-5 duration-500 pb-24 px-1 md:px-0">
+    <div className="space-y-8 md:space-y-20 animate-in fade-in slide-in-from-bottom-5 duration-700 pb-32 px-0">
       {/* 1. 原文頭部區塊 */}
-      <div className="bg-[#8b0000] p-6 md:p-16 rounded-[1.5rem] md:rounded-[3rem] shadow-xl border-b-4 md:border-b-8 border-[#d4af37] flex flex-col items-center text-center text-[#f5e6d3] relative">
-        <div className="text-[10px] font-black uppercase tracking-[0.3em] opacity-60 mb-4">{NAV_LABELS[ch.id][lang]}</div>
-        <h2 className="text-xl md:text-5xl font-black mb-6 md:mb-10 font-serif leading-snug px-2 text-balance">{ch.title[lang]}</h2>
-        <div className="w-full bg-white/10 backdrop-blur-md p-6 md:p-12 rounded-2xl md:rounded-[2.5rem] border-2 border-dashed border-[#d4af37]/40">
-          <p className="text-lg md:text-4xl font-serif font-black leading-relaxed italic text-balance">
-            「{ch.classicText}」
-          </p>
-          <div className="mt-4 text-[9px] md:text-xs font-bold uppercase tracking-widest opacity-50">—— 摘自《紅樓夢》</div>
+      <div className="relative pt-8 md:pt-12">
+        <div className="bg-[#8b0000] p-8 md:p-20 rounded-[2rem] md:rounded-[3.5rem] shadow-2xl border-x-[12px] md:border-x-[24px] border-[#d4af37] flex flex-col items-center text-center text-[#f5e6d3] relative corner-gold overflow-hidden">
+          <div className="mb-4 px-3 py-0.5 border border-[#d4af37]/50 rounded-full text-[10px] font-black uppercase tracking-[0.3em] opacity-80">{NAV_LABELS[ch.id][lang]}</div>
+          <h2 className="text-2xl md:text-6xl font-black mb-8 font-serif leading-snug px-2 text-balance">{ch.title[lang]}</h2>
+          
+          <div className="w-full bg-[#fdfbf7]/10 backdrop-blur-md p-6 md:p-16 rounded-[1.5rem] md:rounded-[3rem] border-2 border-dashed border-[#d4af37]/50 shadow-inner">
+            <p className="text-xl md:text-5xl font-serif font-black leading-relaxed italic text-balance text-[#f5e6d3]">
+              {ch.classicText}
+            </p>
+            <div className="mt-6 flex items-center justify-center gap-2">
+              <div className="w-6 h-px bg-[#d4af37]/50"></div>
+              <div className="text-[10px] md:text-sm font-bold uppercase tracking-[0.2em] text-[#d4af37]">摘自《紅樓夢》</div>
+              <div className="w-6 h-px bg-[#d4af37]/50"></div>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* 2. 解說與影片 */}
-      <div className="bg-white p-6 md:p-16 rounded-[1.5rem] md:rounded-[3rem] shadow-lg space-y-8 md:space-y-12 border border-slate-100">
-        <div className="border-l-4 md:border-l-8 border-[#d4af37] pl-5 md:pl-10">
-          <h4 className="text-[10px] md:text-sm font-black text-slate-400 uppercase tracking-[0.2em] mb-2 md:mb-4">語境深度剖析</h4>
-          <p className="text-lg md:text-4xl text-slate-800 leading-relaxed md:leading-snug font-serif font-bold text-pretty">
+      <div className="lattice-container bg-white rounded-[1.5rem] md:rounded-[3rem] shadow-xl p-6 md:p-20 space-y-8 md:space-y-12">
+        <div className="border-l-[6px] md:border-l-[10px] border-[#8b0000] pl-4 md:pl-16 relative">
+          <h4 className="text-[10px] md:text-sm font-black text-[#8b0000]/60 uppercase tracking-[0.3em] mb-4">文化語境深探</h4>
+          <p className="text-lg md:text-4xl text-slate-800 leading-snug font-serif font-black text-justify-zh">
             {ch.modernExplanation[lang]}
           </p>
         </div>
         
-        {/* 影片區域 - 修改為直式比例 aspect-[9/16] 並縮減最大寬度以符合直式美感 */}
-        <div className="relative aspect-[9/16] bg-black rounded-2xl md:rounded-[2.5rem] overflow-hidden shadow-2xl border-2 md:border-8 border-[#f5e6d3] w-full max-w-[320px] md:max-w-[400px] mx-auto">
-           <iframe 
-             className="absolute inset-0 w-full h-full"
-             src={`https://www.youtube.com/embed/${ch.videoUrl}?modestbranding=1&rel=0&controls=1`} 
-             title="Lesson Video"
-             frameBorder="0" 
-             allowFullScreen
-           ></iframe>
+        <div className="relative group max-w-[360px] md:max-w-[420px] mx-auto">
+           <div className="relative aspect-[9/16] bg-black rounded-[2rem] md:rounded-[2.8rem] overflow-hidden shadow-2xl border-[8px] md:border-[12px] border-[#f5e6d3]">
+              <iframe className="absolute inset-0 w-full h-full" src={`https://www.youtube.com/embed/${ch.videoUrl}?modestbranding=1&rel=0&controls=1&showinfo=0`} frameBorder="0" allowFullScreen></iframe>
+           </div>
         </div>
       </div>
 
       {/* 3. 價值觀對比 */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
-        <div className="bg-[#fdfbf7] p-6 md:p-12 rounded-[1.5rem] md:rounded-[2.5rem] border border-[#d4af37]/30 shadow-sm">
-           <div className="flex items-center gap-3 mb-4">
-             <span className="text-xl md:text-3xl">🏛️</span>
-             <h4 className="text-[#8b0000] font-black uppercase tracking-widest text-[10px] md:text-xs">古代價值觀</h4>
-           </div>
-           <p className="text-base md:text-2xl font-bold text-slate-700 leading-relaxed md:leading-loose">{ch.contrast.ancient[lang]}</p>
+        <div className="bg-white p-8 md:p-16 rounded-[2rem] border-2 border-[#8b0000]/10 shadow-lg relative overflow-hidden group">
+           <h4 className="text-[#8b0000] font-black uppercase tracking-[0.2em] text-[10px] mb-4 flex items-center gap-2">🏛️ 大觀園：古代規臬</h4>
+           <p className="text-lg md:text-3xl font-serif font-bold text-slate-700 leading-relaxed text-justify-zh">{ch.contrast.ancient[lang]}</p>
         </div>
-        <div className="bg-blue-50 p-6 md:p-12 rounded-[1.5rem] md:rounded-[2.5rem] border border-blue-100 shadow-sm">
-           <div className="flex items-center gap-3 mb-4">
-             <span className="text-xl md:text-3xl">📱</span>
-             <h4 className="text-blue-800 font-black uppercase tracking-widest text-[10px] md:text-xs">現代價值觀</h4>
-           </div>
-           <p className="text-base md:text-2xl font-bold text-slate-700 leading-relaxed md:leading-loose">{ch.contrast.modern[lang]}</p>
+        <div className="bg-[#fcf9f2] p-8 md:p-16 rounded-[2rem] border-2 border-[#d4af37]/30 shadow-lg relative overflow-hidden group">
+           <h4 className="text-[#d4af37] font-black uppercase tracking-[0.2em] text-[10px] mb-4 flex items-center gap-2">📱 現代社會：跨文化語境</h4>
+           <p className="text-lg md:text-3xl font-serif font-bold text-slate-700 leading-relaxed text-justify-zh">{ch.contrast.modern[lang]}</p>
         </div>
       </div>
 
       {/* 4. 語言學習網格 */}
-      <div className="space-y-6 md:space-y-10">
-        <div className="flex items-center gap-3 md:gap-5 px-2">
-          <div className="h-6 md:h-12 w-1.5 md:w-3 bg-[#8b0000] rounded-full"></div>
-          <h3 className="text-xl md:text-4xl font-black text-[#8b0000] font-serif">語言學習中心</h3>
+      <div className="space-y-8">
+        <div className="flex items-center gap-4 px-1">
+          <div className="h-1 w-10 md:w-16 bg-[#d4af37] rounded-full"></div>
+          <h3 className="text-xl md:text-5xl font-black text-[#8b0000] font-serif">語言實踐</h3>
+          <div className="flex-1 h-1 bg-[#8b0000]/10 rounded-full"></div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
           {/* 生詞卡 */}
-          <div className="bg-white p-6 md:p-12 rounded-[1.5rem] md:rounded-[3rem] shadow-xl border-t-8 border-emerald-500">
-             <h4 className="font-black text-emerald-700 mb-6 md:mb-10 flex items-center gap-3 text-lg md:text-2xl">
-               <span className="bg-emerald-100 p-2 rounded-xl text-xl">🌟</span> 現代實用生詞
-             </h4>
-             <ul className="space-y-4 md:space-y-8">
+          <div className="bg-white p-6 md:p-16 rounded-[2rem] md:rounded-[3.5rem] shadow-xl border-t-[8px] md:border-t-[12px] border-emerald-600">
+             <h4 className="font-serif font-black text-emerald-800 mb-8 flex items-center gap-3 text-lg md:text-3xl">✒️ 常見語彙</h4>
+             <ul className="space-y-6 md:space-y-10">
                {ch.vocab.map((v, i) => (
                  <li key={i} className="flex flex-col border-b border-slate-50 pb-4 last:border-0">
-                   <span className="font-black text-lg md:text-3xl text-slate-800 hover:text-emerald-600 transition-colors cursor-default">{v.word}</span>
-                   <span className="text-slate-500 text-sm md:text-lg mt-1 md:mt-3 font-medium leading-relaxed">{v.meaning[lang]}</span>
+                   <span className="font-serif font-black text-xl md:text-4xl text-slate-800">{v.word}</span>
+                   <span className="text-slate-500 text-base md:text-2xl mt-1 font-serif italic text-justify-zh">{v.meaning[lang]}</span>
                  </li>
                ))}
              </ul>
           </div>
           
           {/* 語法卡 */}
-          <div className="bg-white p-6 md:p-12 rounded-[1.5rem] md:rounded-[3rem] shadow-xl border-t-8 border-indigo-500">
-             <h4 className="font-black text-indigo-700 mb-6 md:mb-10 flex items-center gap-3 text-lg md:text-2xl">
-               <span className="bg-indigo-100 p-2 rounded-xl text-xl">⚙️</span> 跨文化語法點
-             </h4>
-             <ul className="space-y-6 md:space-y-10">
+          <div className="bg-white p-6 md:p-16 rounded-[2rem] md:rounded-[3.5rem] shadow-xl border-t-[8px] md:border-t-[12px] border-indigo-600">
+             <h4 className="font-serif font-black text-indigo-800 mb-8 flex items-center gap-3 text-lg md:text-3xl">⚙️ 句式應用</h4>
+             <ul className="space-y-4 md:space-y-10">
                {ch.grammar.map((g, i) => (
-                 <li key={i} className="bg-slate-50 p-4 md:p-8 rounded-xl md:rounded-[2rem] border-l-4 border-indigo-200">
-                   <p className="font-black text-slate-800 text-base md:text-2xl mb-2 md:mb-4">{g.point}</p>
-                   <p className="text-slate-500 text-sm md:text-xl leading-relaxed font-medium">{g.usage[lang]}</p>
+                 <li key={i} className="bg-slate-50 p-6 md:p-12 rounded-[1.5rem] md:rounded-[2.5rem] border-l-[6px] border-indigo-200">
+                   <p className="font-serif font-black text-slate-800 text-lg md:text-3xl mb-2">{g.point}</p>
+                   <p className="text-slate-600 text-sm md:text-2xl font-serif italic text-justify-zh">{g.usage[lang]}</p>
                  </li>
                ))}
              </ul>
@@ -167,49 +169,51 @@ const App: React.FC = () => {
         </div>
       </div>
 
-      {/* 5. 現代場景閱讀 */}
-      <div className="bg-[#1a1a1a] text-[#f5e6d3] p-8 md:p-20 rounded-[1.5rem] md:rounded-[4rem] shadow-2xl relative overflow-hidden border-b-[8px] md:border-b-[16px] border-[#d4af37]">
-         <div className="absolute top-4 right-4 text-6xl md:text-[15rem] opacity-5 font-serif pointer-events-none select-none italic">"</div>
-         <h3 className="text-[#d4af37] font-black mb-6 md:mb-10 uppercase text-[10px] md:text-xs tracking-[0.4em]">沉浸式場景閱讀</h3>
-         <p className="text-xl md:text-4xl leading-relaxed md:leading-loose italic opacity-95 font-serif text-pretty">
-           <span className="text-4xl md:text-7xl font-black text-[#d4af37] float-left mr-3 md:mr-6 leading-none mt-1">「</span>
-           {ch.modernEssay[lang]}
-         </p>
+      {/* 5. 現代場景閱讀 - 桃花粉 (校正版) */}
+      <div className="relative p-0.5">
+        <div className="bg-[#fff0f5] text-[#8b0000] p-8 md:p-24 rounded-[2rem] md:rounded-[4rem] shadow-2xl relative overflow-hidden border-b-[12px] md:border-b-[20px] border-[#ffc0cb]">
+           <h3 className="text-[#8b0000] font-black mb-6 uppercase text-[10px] tracking-[0.3em] border-b border-[#8b0000]/10 pb-2 inline-block">沉浸式場景感悟</h3>
+           <p className="text-xl md:text-5xl leading-relaxed italic font-serif text-justify-zh">
+             {ch.modernEssay[lang]}
+           </p>
+        </div>
       </div>
 
       {/* 6. 表單區塊 */}
-      <div className="mt-12 md:mt-24 pt-12 md:pt-24 border-t-4 border-dashed border-slate-200">
-        <div className="text-center mb-10 md:mb-16">
-          <h3 className="text-xl md:text-4xl font-black text-slate-800 font-serif mb-2">練習與反饋</h3>
-          <p className="text-base md:text-xl text-slate-400 font-medium px-4">完成下方練習以加深印象。</p>
+      <div className="mt-12 md:mt-32 pt-12 border-t-2 border-[#d4af37]/20">
+        <div className="text-center mb-8 md:mb-16">
+          <h3 className="text-2xl md:text-5xl font-black text-slate-800 font-serif mb-2">章節習題</h3>
+          <p className="text-sm md:text-2xl text-slate-400 font-serif px-4">請完成此回研習之後的練習，驗證您的文化理解。</p>
         </div>
-        <div className="bg-white rounded-[1.5rem] md:rounded-[3rem] shadow-2xl overflow-hidden border border-slate-100" dangerouslySetInnerHTML={{ __html: ch.formIframe || FORM_IFRAME }} />
+        <div className="lattice-container rounded-[1.5rem] md:rounded-[3rem] shadow-2xl overflow-hidden bg-white/50 p-1 md:p-2">
+           <div className="bg-white rounded-[1.2rem] md:rounded-[2.5rem] overflow-hidden" 
+                dangerouslySetInnerHTML={{ __html: ch.formIframe || FORM_IFRAME }} />
+        </div>
       </div>
     </div>
   );
 
   const renderFeedback = () => (
-    <div className="space-y-8 md:space-y-12 animate-in fade-in slide-in-from-bottom-5 duration-500 pb-24 px-1 md:px-0">
-      <div className="bg-[#8b0000] p-6 md:p-16 rounded-[1.5rem] md:rounded-[3rem] shadow-xl border-b-4 md:border-b-8 border-[#d4af37] flex flex-col items-center text-center text-[#f5e6d3] relative">
-        <div className="text-[10px] font-black uppercase tracking-[0.3em] opacity-60 mb-4">{NAV_LABELS.feedback[lang]}</div>
-        <h2 className="text-xl md:text-5xl font-black mb-6 md:mb-10 font-serif leading-snug px-2 text-balance">{NAV_LABELS.feedback[lang]}</h2>
-        <p className="text-base md:text-2xl font-medium opacity-90 leading-relaxed max-w-2xl mx-auto">
-          您的意見是我們前進的動力，歡迎提供任何回饋與建議。
-        </p>
+    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-5 duration-700 pb-32 px-0">
+      <div className="bg-[#8b0000] p-10 md:p-24 rounded-[2rem] md:rounded-[3.5rem] shadow-2xl border-b-[12px] border-[#d4af37] flex flex-col items-center text-center text-[#f5e6d3] relative corner-gold">
+        <h2 className="text-3xl md:text-7xl font-black mb-6 font-serif leading-snug">{NAV_LABELS.feedback[lang]}</h2>
+        <p className="text-lg md:text-3xl font-serif opacity-90 italic">「您的隻言片語，皆是寶貴明燈。」</p>
       </div>
-      <div className="bg-white rounded-[1.5rem] md:rounded-[3rem] shadow-2xl overflow-hidden border border-slate-100">
-        <div dangerouslySetInnerHTML={{ __html: `<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfkzQGlRWhToTNq-vq1nZdhfc_BrqqRCR-3tBeBsMcJF6gMqQ/viewform?embedded=true" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">載入中…</iframe>` }} />
+      <div className="lattice-container rounded-[1.5rem] overflow-hidden bg-white/50 p-1">
+        <div className="bg-white rounded-xl overflow-hidden">
+          <div dangerouslySetInnerHTML={{ __html: `<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfkzQGlRWhToTNq-vq1nZdhfc_BrqqRCR-3tBeBsMcJF6gMqQ/viewform?embedded=true" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">載入中…</iframe>` }} />
+        </div>
       </div>
     </div>
   );
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row bg-[#fcf9f2] text-slate-900 pb-20 md:pb-0 font-sans overflow-x-hidden">
+    <div className="min-h-screen flex flex-col md:flex-row bg-[#fdfbf7] text-slate-900 pb-20 md:pb-0 font-sans overflow-x-hidden">
       <Navigation currentView={view} setView={setView} lang={lang} />
       {renderLanguageSwitcher()}
 
-      <main ref={mainRef} className="flex-1 w-full p-4 md:p-16 overflow-y-auto h-screen scroll-smooth">
-        <div className="max-w-5xl mx-auto">
+      <main ref={mainRef} className="flex-1 w-full p-2 md:p-16 md:pl-20 overflow-y-auto h-screen scroll-smooth">
+        <div className="max-w-6xl mx-auto px-1 md:px-0">
           {view === 'home' && renderHome()}
           {view === 'feedback' && renderFeedback()}
           {CHAPTERS.map(ch => view === ch.id ? <div key={ch.id}>{renderChapter(ch)}</div> : null)}

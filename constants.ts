@@ -7,7 +7,7 @@ export const NAV_LABELS: Record<string, MultiLangText> = {
   chapter2: { en: 'Humility', vn: 'Hồi 2', jp: '第2回', kr: '제2章', 'zh-tw': '謙卑之道', 'zh-cn': '謙卑之道' },
   chapter3: { en: 'Sincerity', vn: 'Hồi 3', jp: '第3回', kr: '제3장', 'zh-tw': '心心相印', 'zh-cn': '心心相印' },
   chapter4: { en: 'Discipline', vn: 'Hồi 4', jp: '第4回', kr: '제4장', 'zh-tw': '鐵面無私', 'zh-cn': '铁面无私' },
-  feedback: { en: 'Feedback', vn: 'Phản hồi', jp: 'フィードバック', kr: '피드백', 'zh-tw': '回饋建議', 'zh-cn': '回馈建议' }
+  feedback: { en: 'Feedback', vn: 'Phản hồi', jp: 'フィードバック', kr: '피드백', 'zh-tw': '回饋建議', 'zh-cn': '回饋建議' }
 };
 
 export const HOME_CONTENT = {
@@ -44,7 +44,7 @@ export const CHAPTERS: ChapterContent[] = [
     },
     videoUrl: "Xf6ANQc6aVM",
     contrast: {
-      ancient: { en: 'Offspring is the duty to ancestors.', vn: 'Con cái là nghĩa vụ với tổ tiên.', jp: '子孫は祖先への義務です。', kr: '자손은 조상에 대한 의무입니다.', 'zh-tw': '古代：多子多福，生孩子是為了延續家族香火與地位。', 'zh-cn': '古代：多子多福，生孩子是為了延續家族香火與地位。' },
+      ancient: { en: 'Offspring is the duty to ancestors.', vn: 'Con cái là nghĩa vụ with tổ tiên.', jp: '子孫は祖先への義務です。', kr: '자손은 조상에 대한 의무입니다.', 'zh-tw': '古代：多子多福，生孩子是為了延續家族香火與地位。', 'zh-cn': '古代：多子多福，生孩子是為了延續家族香火與地位。' },
       modern: { en: 'Personal choice and happiness over duty.', vn: 'Lựa chọn cá nhân hơn là nghĩa vụ.', jp: '義務よりも個人の選擇と幸せ。', kr: '의무보다 개인의 선택과 행복.', 'zh-tw': '現代：個人自由與幸福重於一切，生不生孩子是個人的權利。', 'zh-cn': '現代：個人自由與幸福重於一切，生不生孩子是個人的權利。' }
     },
     vocab: [
@@ -90,8 +90,8 @@ export const CHAPTERS: ChapterContent[] = [
     },
     vocab: [
       { word: '幽默感', meaning: { en: 'Sense of humor', vn: 'Khiếu hài hước', jp: 'ユーモア', kr: '유머 감각', 'zh-tw': '說話有趣，讓人想笑。', 'zh-cn': '說話有趣，讓人想笑。' } },
-      { word: '尷尬', meaning: { en: 'Awkward', vn: 'Ngại ngùng', jp: '氣まずい', kr: '어색하다', 'zh-tw': '覺得不好意思或不自在。', 'zh-cn': '覺得不好意思或不自在。' } },
-      { word: '自嘲', meaning: { en: 'Self-deprecation', vn: 'Tự giễu', jp: '自虐', kr: '자학', 'zh-tw': '開自己的玩笑。', 'zh-cn': '開自己的玩笑。' } },
+      { word: '尷尬', meaning: { en: 'Awward', vn: 'Ngại ngùng', jp: '氣まずい', kr: '어색하다', 'zh-tw': '覺得不好意思或不自在。', 'zh-cn': '覺得不好意思或不自在。' } },
+      { word: '自嘲', meaning: { en: 'Self-deprecation', vn: 'Tự giễu', jp: 'Tự giễu', kr: '자학', 'zh-tw': '開自己的玩笑。', 'zh-cn': '開自己的玩笑。' } },
       { word: '氣氛', meaning: { en: 'Atmosphere', vn: 'Bầu không khí', jp: '雰囲気', kr: '분위기', 'zh-tw': '環境給人的感覺。', 'zh-cn': '環境給人的感覺。' } },
       { word: '圓滑', meaning: { en: 'Smooth/Socially adept', vn: 'Trơn tru/Khéo léo', jp: '円滑', kr: '원만하다', 'zh-tw': '說話做事很靈活，不傷感情。', 'zh-cn': '說話做事很靈活，不傷感情。' } }
     ],
@@ -124,6 +124,7 @@ export const CHAPTERS: ChapterContent[] = [
       'zh-cn': '賈寶玉是一個很不傳統的人，他覺得「感情」比「規矩」更重要。這句話雖然簡單，卻包含了華人社會中最難說出口的真話。'
     },
     videoUrl: "Xf6ANQc6aVM", // Placeholder
+    formIframe: `<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfCCO8JcSbwVvfx55ozF-GKHHB2K_mHrdaW2yJWhelQWSw2Mw/viewform?embedded=true" width="100%" height="1823" frameborder="0" marginheight="0" marginwidth="0">載入中…</iframe>`,
     contrast: {
       ancient: { en: 'Duty and social roles define human connections.', vn: 'Nghĩa vụ xác định các mối quan hệ.', jp: '義務と社会的役割が人間関係を定義します。', kr: '의무와 사회적 역할이 인간관계를 정의합니다.', 'zh-tw': '古代：婚姻是利益交換，真心往往被犧牲。', 'zh-cn': '古代：婚姻是利益交換，真心往往被犧牲。' },
       modern: { en: 'Individual sincerity and transparency are core values.', vn: 'Sự chân thành cá nhân là cốt lõi.', jp: '個人の誠実さと透明性が核心的價值です。', kr: '개인의 성실함과 투명성이 핵심 가치입니다.', 'zh-tw': '現代：追求真誠的伴侶關係，但在家庭壓力中依然糾結。', 'zh-cn': '現代：追求真誠的伴侶關係，但在家庭壓力中依然糾結。' }
@@ -139,7 +140,7 @@ export const CHAPTERS: ChapterContent[] = [
       { point: '「到底...不...」', usage: { en: 'Whether or not...', vn: 'Rốt cuộc có... hay không', jp: '一体…なのか？', kr: '도대체 ...인가?', 'zh-tw': '用於詢問最終確定的情況。', 'zh-cn': '用於詢問最終確定的情況。' } },
       { point: '「寧可...也不...」', usage: { en: 'Would rather... than...', vn: 'Thà... còn hơn...', jp: '…するくらいなら…', kr: '...할지언정 ...하지 않다', 'zh-tw': '表示一種極端的選擇。', 'zh-cn': '表示一種極端的選擇。' } },
       { point: '「與其...不如...」', usage: { en: 'Instead of... better to...', vn: 'Thay vì... thì...', jp: '…よりはむしろ…', kr: '...하기보다 ...하는 편이 낫다', 'zh-tw': '表示比較後的較好建議。', 'zh-cn': '表示比較後的較好建議。' } },
-      { point: '「要不是...就...」', usage: { en: 'If not for... then...', vn: 'If not for... then...', jp: 'もし…でなかったら…', kr: '...이 아니었다면 ...했을 것이다', 'zh-tw': '用來引出與事實相反的假設。', 'zh-cn': '用來引出與事實相反的假設。' } },
+      { point: '「要不是...就...」', usage: { en: 'If not for... then...', vn: 'If not for... then...', jp: 'mối…でなかったら…', kr: '...이 아니었다면 ...했을 것이다', 'zh-tw': '用來引出與事實相反的假設。', 'zh-cn': '用來引出與事實相反的假設。' } },
       { point: '「搞了半天...原來...」', usage: { en: 'After a long time, it turns out...', vn: 'Mãi một hồi mới biết...', jp: '散々やって…結局…', kr: '한참을 그랬는데 결국...', 'zh-tw': '表示經過一番曲折後才發現真相。', 'zh-cn': '表示經過一番曲折後才發現真相。' } }
     ],
     modernEssay: {
@@ -164,6 +165,7 @@ export const CHAPTERS: ChapterContent[] = [
       'zh-cn': '賈探春是一個很有管理頭腦的人。在混亂的賈府裡，她堅持「按規矩辦事」，甚至不給親戚面子。這在講究「人情」的環境中非常不容易。'
     },
     videoUrl: "Xf6ANQc6aVM", // Placeholder
+    formIframe: `<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdILM_y4vQICAiiJt8Mvqwo9xIp17TNFe8csKjZg0JBfO7LsA/viewform?embedded=true" width="100%" height="595" frameborder="0" marginheight="0" marginwidth="0">載入中…</iframe>`,
     contrast: {
       ancient: { en: 'Favoritism and human interest drive systems.', vn: 'Ân huệ và quan hệ định hình hệ thống.', jp: '贔屓と人情がシステムを動かします。', kr: '편애와 인정이 시스템을 움직입니다.', 'zh-tw': '古代：關係好的人可以不守規矩，造成組織混亂。', 'zh-cn': '古代：關係好的人可以不守規矩，造成組織混亂。' },
       modern: { en: 'SOPs and institutional transparency are key.', vn: 'SOP và sự minh bạch là chìa khóa.', jp: 'SOPと制度의透明性が鍵です。', kr: 'SOP와 제도의 투명성이 핵심입니다.', 'zh-tw': '現代：標準作業程序 (SOP) 重於個人關係，效率第一。', 'zh-cn': '現代：標準作業程序 (SOP) 重於個人關係，效率第一。' }
@@ -176,7 +178,7 @@ export const CHAPTERS: ChapterContent[] = [
       { word: '原則', meaning: { en: 'Principle', vn: 'Nguyên tắc', jp: '原則', kr: '원칙', 'zh-tw': '說話做事的基本準則。', 'zh-cn': '說話做事的基本準則。' } }
     ],
     grammar: [
-      { point: '「若是...就...」', usage: { en: 'If... then...', vn: 'Nếu như... thì...', jp: 'もし…なら…', kr: '만약 ...라면 ...하다', 'zh-tw': '表達一種假設的邏輯推論。', 'zh-cn': '表達一種假設的邏輯推論。' } },
+      { point: '「若是...就...」', usage: { en: 'If... then...', vn: 'Nếu như... thì...', jp: 'mối…なら…', kr: '만약 ...라면 ...하다', 'zh-tw': '表達一種假設的邏輯推論。', 'zh-cn': '表達一種假設的邏輯推論。' } },
       { point: '「凡事...都...」', usage: { en: 'Every/All...', vn: 'Mọi việc... đều...', jp: 'すべて…は…', kr: '모든 ...은 ...하다', 'zh-tw': '表示沒有例外的全部。', 'zh-cn': '表示沒有例外的全部。' } },
       { point: '「...得一塌糊塗」', usage: { en: 'A total mess...', vn: '...đến mức rối loạn', jp: 'めちゃくちゃ…', kr: '엉망진창으로...', 'zh-tw': '誇張地形容非常混亂或糟糕的程度。', 'zh-cn': '誇張地形容非常混亂或糟糕的程度。' } },
       { point: '「歸根結底...」', usage: { en: 'In the final analysis...', vn: 'Suy cho cùng...', jp: '結局のところ…', kr: '결국...', 'zh-tw': '用來引出最根本的原因。', 'zh-cn': '用來引出最根本的原因。' } },
