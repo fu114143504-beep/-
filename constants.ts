@@ -4,7 +4,7 @@ import { AppView, MultiLangText, ChapterContent } from './types';
 export const NAV_LABELS: Record<string, MultiLangText> = {
   home: { en: 'Welcome', vn: 'Chào mừng', jp: 'ようこそ', kr: '환영', 'zh-tw': '賓至如歸', 'zh-cn': '宾至如归' },
   chapter1: { en: 'Offspring', vn: 'Hồi 1', jp: '第1回', kr: '제1장', 'zh-tw': '兒孫滿堂', 'zh-cn': '儿孙满堂' },
-  chapter2: { en: 'Humility', vn: 'Hồi 2', jp: '第2回', kr: '제2장', 'zh-tw': '謙卑之道', 'zh-cn': '谦卑之道' },
+  chapter2: { en: 'Humility', vn: 'Hồi 2', jp: '第2回', kr: '제2장', 'zh-tw': '謙卑之道', 'zh-cn': '謙卑之道' },
   chapter3: { en: 'Sincerity', vn: 'Hồi 3', jp: '第3回', kr: '제3장', 'zh-tw': '心心相印', 'zh-cn': '心心相印' },
   chapter4: { en: 'Discipline', vn: 'Hồi 4', jp: '第4回', kr: '제4장', 'zh-tw': '鐵面無私', 'zh-cn': '铁面无私' }
 };
@@ -71,17 +71,17 @@ export const CHAPTERS: ChapterContent[] = [
   },
   {
     id: 'chapter2',
-    title: { en: 'Chapter 2: The Art of Humility', vn: 'Nghệ thuật khiêm tốn', jp: '謙遜の技術', kr: '겸손의 기술', 'zh-tw': '第二回：劉姥姥進大觀園與幽默感', 'zh-cn': '第二回：刘姥姥进大观园与幽默感' },
+    title: { en: 'Chapter 2: The Art of Humility', vn: 'Nghệ thuật khiêm tốn', jp: '謙遜の技術', kr: '겸손의 技術', 'zh-tw': '第二回：劉姥姥進大觀園與幽默感', 'zh-cn': '第二回：刘姥姥进大观园与幽默感' },
     classicText: "「老劉，老劉，食量大如牛，吃一個老母豬不抬頭。」",
     modernExplanation: {
       en: 'Granny Liu uses self-deprecating humor to cross social boundaries and win hearts.',
       vn: 'Lưu Lão Lão sử dụng sự hài hước để xóa tan rào cản xã hội.',
-      jp: '劉姥姥は自虐的なユーモアを使って社会の壁を越え、心を掴みます。',
+      jp: '劉姥姥は自虐的なユーモアを使って社會の壁を越え、心を掴みます。',
       kr: '유노파는 자기 비하적인 유머를 사용하여 사회적 장벽을 넘고 마음을 사로잡습니다.',
       'zh-tw': '劉姥姥進大觀園時，故意裝笨逗大家開心。這種「幽默感」其實是一種生存智慧，讓地位高的人放下戒心。',
       'zh-cn': '刘姥姥进大观园时，故意装笨逗大家开心。这种“幽默感”其实是一种生存智慧，让地位高的人放下戒心。'
     },
-    videoUrl: "Xf6ANQc6aVM", // Placeholder
+    videoUrl: "vTld20VCpAg",
     contrast: {
       ancient: { en: 'Strict class hierarchy; bowing is mandatory.', vn: 'Phân chia giai cấp nghiêm ngặt.', jp: '厳格な階級制度。', kr: '엄격한 계급 제도.', 'zh-tw': '古代：階級明確，低地位者必須取悅高地位者。', 'zh-cn': '古代：阶级明确，低地位者必须取悦高地位者。' },
       modern: { en: 'Flat hierarchy; humor is for rapport building.', vn: 'Giao tiếp bình đẳng hơn.', jp: 'フラットな関係。', kr: '수평적 관계.', 'zh-tw': '現代：追求平等，幽默被視為一種「軟實力」與人格魅力。', 'zh-cn': '现代：追求平等，幽默被视为一种“软实力”与人格魅力。' }
@@ -90,7 +90,7 @@ export const CHAPTERS: ChapterContent[] = [
       { word: '幽默感', meaning: { en: 'Sense of humor', vn: 'Khiếu hài hước', jp: 'ユーモア', kr: '유머 감각', 'zh-tw': '說話有趣，讓人想笑。', 'zh-cn': '说话有趣，让人想笑。' } },
       { word: '尷尬', meaning: { en: 'Awkward', vn: 'Ngại ngùng', jp: '気まずい', kr: '어색하다', 'zh-tw': '覺得不好意思或不自在。', 'zh-cn': '觉得不好意思或不自在。' } },
       { word: '自嘲', meaning: { en: 'Self-deprecation', vn: 'Tự giễu', jp: '自虐', kr: '자학', 'zh-tw': '開自己的玩笑。', 'zh-cn': '开自己的玩笑。' } },
-      { word: '氣氛', meaning: { en: 'Atmosphere', vn: 'Bầu không khí', jp: '雰囲気', kr: '분위기', 'zh-tw': '環境給人的感覺。', 'zh-cn': '环境给人的感觉。' } },
+      { word: '氣氛', meaning: { en: 'Atmosphere', vn: 'Bầu không khí', jp: '雰囲気', kr: '분위기', 'zh-tw': '環境給人的感覺。', 'zh-cn': '環境給人的感覺。' } },
       { word: '圓滑', meaning: { en: 'Smooth/Socially adept', vn: 'Trơn tru/Khéo léo', jp: '円滑', kr: '원만하다', 'zh-tw': '說話做事很靈活，不傷感情。', 'zh-cn': '说话做事很灵活，不伤感情。' } }
     ],
     grammar: [
@@ -124,7 +124,7 @@ export const CHAPTERS: ChapterContent[] = [
     videoUrl: "Xf6ANQc6aVM", // Placeholder
     contrast: {
       ancient: { en: 'Duty and social roles define human connections.', vn: 'Nghĩa vụ xác định các mối quan hệ.', jp: '義務と社会的役割が人間関係を定義します。', kr: '의무와 사회적 역할이 인간관계를 정의합니다.', 'zh-tw': '古代：婚姻是利益交換，真心往往被犧牲。', 'zh-cn': '古代：婚姻是利益交换，真心往往被牺牲。' },
-      modern: { en: 'Individual sincerity and transparency are core values.', vn: 'Sự chân thành cá nhân là cốt lõi.', jp: '個人の誠実さと透明性が核心的価値です。', kr: '개인의 성실함과 투명성이 핵심 가치입니다.', 'zh-tw': '現代：追求真誠的伴侶關係，但在家庭壓力中依然糾結。', 'zh-cn': '现代：追求真诚的伴侣关系，但在家庭压力中依然纠结。' }
+      modern: { en: 'Individual sincerity and transparency are core values.', vn: 'Sự chân thành cá nhân là cốt lõi.', jp: '個人の誠実さと透明性が核心的価値です。', kr: '개인의 성실함과 투명성이 핵심 가치입니다.', 'zh-tw': '現代：追求真誠的伴侶關係，但在家庭壓力中依然糾結。', 'zh-cn': '現代：追求真誠的伴侶關係，但在家庭壓力中依然糾結。' }
     },
     vocab: [
       { word: '真心', meaning: { en: 'Sincerity/True heart', vn: 'Chân tâm', jp: '本心', kr: '진심', 'zh-tw': '心裡最真實的想法。', 'zh-cn': '心里最真实的想法。' } },
@@ -136,7 +136,7 @@ export const CHAPTERS: ChapterContent[] = [
     grammar: [
       { point: '「到底...不...」', usage: { en: 'Whether or not...', vn: 'Rốt cuộc có... hay không', jp: '一体…なのか？', kr: '도대체 ...인가?', 'zh-tw': '用於詢問最終確定的情況。', 'zh-cn': '用于询问最终确定的情况。' } },
       { point: '「寧可...也不...」', usage: { en: 'Would rather... than...', vn: 'Thà... còn hơn...', jp: '…するくらいなら…', kr: '...할지언정 ...하지 않다', 'zh-tw': '表示一種極端的選擇。', 'zh-cn': '表示一种极致的选择。' } },
-      { point: '「與其...不如...」', usage: { en: 'Instead of... better to...', vn: 'Thay vì... thì...', jp: '…よりはむしろ…', kr: '...하기보다 ...하는 편이 낫다', 'zh-tw': '表示比較後的較好建議。', 'zh-cn': '表示比较后的较好建议。' } },
+      { point: '「與其...不如...」', usage: { en: 'Instead of... better to...', vn: 'Thay vì... thì...', jp: '…よりはむしろ…', kr: '...하기보다 ...하는 편이 낫다', 'zh-tw': '表示比較後的較好建議。', 'zh-cn': '表示比較後的較好建議。' } },
       { point: '「要不是...就...」', usage: { en: 'If not for... then...', vn: 'Nếu không vì... thì...', jp: 'もし…でなかったら…', kr: '...이 아니었다면 ...했을 것이다', 'zh-tw': '用來引出與事實相反的假設。', 'zh-cn': '用来引出与事实相反的假设。' } },
       { point: '「搞了半天...原來...」', usage: { en: 'After a long time, it turns out...', vn: 'Mãi một hồi mới biết...', jp: '散々やって…結局…', kr: '한참을 그랬는데 결국...', 'zh-tw': '表示經過一番曲折後才發現真相。', 'zh-cn': '表示经过一番曲折后才发现真相。' } }
     ],
