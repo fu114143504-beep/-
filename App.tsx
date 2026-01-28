@@ -92,8 +92,8 @@ const App: React.FC = () => {
           </p>
         </div>
         
-        {/* 影片區域 */}
-        <div className="relative aspect-[16/9] bg-black rounded-2xl md:rounded-[2.5rem] overflow-hidden shadow-2xl border-2 md:border-8 border-[#f5e6d3] w-full max-w-5xl mx-auto">
+        {/* 影片區域 - 修改為直式比例 aspect-[9/16] 並縮減最大寬度以符合直式美感 */}
+        <div className="relative aspect-[9/16] bg-black rounded-2xl md:rounded-[2.5rem] overflow-hidden shadow-2xl border-2 md:border-8 border-[#f5e6d3] w-full max-w-[320px] md:max-w-[400px] mx-auto">
            <iframe 
              className="absolute inset-0 w-full h-full"
              src={`https://www.youtube.com/embed/${ch.videoUrl}?modestbranding=1&rel=0&controls=1`} 
