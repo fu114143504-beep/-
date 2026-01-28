@@ -16,6 +16,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentView, setView, lang }) =
     { id: 'chapter2', icon: '🏮' },
     { id: 'chapter3', icon: '❤️' },
     { id: 'chapter4', icon: '⚖️' },
+    { id: 'feedback', icon: '✉️' },
   ];
 
   return (
@@ -37,7 +38,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentView, setView, lang }) =
           }`}
         >
           <span className={`text-xl md:text-3xl transition-transform ${currentView === item.id ? 'scale-110' : 'scale-100'}`}>{item.icon}</span>
-          <span className="text-[9px] md:text-base font-black tracking-tight md:tracking-normal whitespace-nowrap font-serif">
+          <span className="text-[10px] md:text-xl font-black tracking-tight md:tracking-normal whitespace-nowrap font-serif">
             {NAV_LABELS[item.id][lang]}
           </span>
         </button>

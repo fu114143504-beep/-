@@ -6,7 +6,8 @@ export type AppView =
   | 'chapter1' 
   | 'chapter2' 
   | 'chapter3' 
-  | 'chapter4';
+  | 'chapter4'
+  | 'feedback';
 
 export interface MultiLangText {
   en: string;
@@ -40,9 +41,9 @@ export interface ChapterContent {
   vocab: Vocabulary[];
   grammar: Grammar[];
   modernEssay: MultiLangText;
+  formIframe?: string; // 新增章節專屬表單
 }
 
-// Fixed Error: Module '"../types"' has no exported member 'Scenario' in LessonCard.tsx
 export interface Scenario {
   category: string;
   title: string;

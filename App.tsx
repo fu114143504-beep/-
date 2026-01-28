@@ -40,10 +40,15 @@ const App: React.FC = () => {
            {HOME_CONTENT.title[lang]}
          </h1>
          <div className="w-12 md:w-20 h-1.5 md:h-2.5 bg-[#d4af37] mx-auto mb-6 md:mb-10 rounded-full"></div>
-         <p className="text-sm md:text-2xl font-medium opacity-90 leading-relaxed max-w-2xl mx-auto z-10 relative px-4 text-pretty">
+         <p className="text-base md:text-3xl font-medium opacity-90 leading-relaxed max-w-2xl mx-auto z-10 relative px-4 text-pretty">
            {HOME_CONTENT.subtitle[lang]}
          </p>
          <div className="absolute bottom-0 right-0 p-4 md:p-8 text-7xl md:text-9xl opacity-5 font-serif font-black select-none pointer-events-none transform rotate-12">學</div>
+      </div>
+
+      {/* 首頁中間新增表單區塊 */}
+      <div className="bg-white rounded-[1.5rem] md:rounded-[3rem] shadow-xl overflow-hidden border border-slate-100 mx-2 md:mx-0">
+        <div dangerouslySetInnerHTML={{ __html: `<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc75cF3PjWYw3l9JdpU9tsSVWlUkpTxC56dU0ozEwBpbpwQmg/viewform?embedded=true" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0">載入中…</iframe>` }} />
       </div>
       
       {/* 章節卡片網格 */}
@@ -57,7 +62,7 @@ const App: React.FC = () => {
              <div className="absolute top-4 right-4 text-4xl md:text-6xl opacity-5 group-hover:opacity-10 transition-opacity">🏮</div>
              <div className="mb-2 inline-block px-2 py-0.5 bg-slate-100 rounded text-[10px] text-slate-500 font-bold uppercase tracking-wider">{NAV_LABELS[ch.id][lang]}</div>
              <h3 className="text-lg md:text-2xl font-black text-[#8b0000] mb-2 font-serif leading-tight">{ch.title[lang]}</h3>
-             <p className="text-xs md:text-base text-slate-500 line-clamp-2 leading-relaxed font-medium italic mb-4">
+             <p className="text-sm md:text-lg text-slate-500 line-clamp-2 leading-relaxed font-medium italic mb-4">
                {ch.modernExplanation[lang]}
              </p>
              <div className="flex items-center text-[#8b0000] font-black text-[10px] md:text-xs uppercase tracking-[0.2em] group-hover:translate-x-2 transition-all">
@@ -87,7 +92,7 @@ const App: React.FC = () => {
       <div className="bg-white p-6 md:p-16 rounded-[1.5rem] md:rounded-[3rem] shadow-lg space-y-8 md:space-y-12 border border-slate-100">
         <div className="border-l-4 md:border-l-8 border-[#d4af37] pl-5 md:pl-10">
           <h4 className="text-[10px] md:text-sm font-black text-slate-400 uppercase tracking-[0.2em] mb-2 md:mb-4">語境深度剖析</h4>
-          <p className="text-base md:text-3xl text-slate-800 leading-relaxed md:leading-snug font-serif font-bold text-pretty">
+          <p className="text-lg md:text-4xl text-slate-800 leading-relaxed md:leading-snug font-serif font-bold text-pretty">
             {ch.modernExplanation[lang]}
           </p>
         </div>
@@ -111,14 +116,14 @@ const App: React.FC = () => {
              <span className="text-xl md:text-3xl">🏛️</span>
              <h4 className="text-[#8b0000] font-black uppercase tracking-widest text-[10px] md:text-xs">古代價值觀</h4>
            </div>
-           <p className="text-sm md:text-xl font-bold text-slate-700 leading-relaxed md:leading-loose">{ch.contrast.ancient[lang]}</p>
+           <p className="text-base md:text-2xl font-bold text-slate-700 leading-relaxed md:leading-loose">{ch.contrast.ancient[lang]}</p>
         </div>
         <div className="bg-blue-50 p-6 md:p-12 rounded-[1.5rem] md:rounded-[2.5rem] border border-blue-100 shadow-sm">
            <div className="flex items-center gap-3 mb-4">
              <span className="text-xl md:text-3xl">📱</span>
              <h4 className="text-blue-800 font-black uppercase tracking-widest text-[10px] md:text-xs">現代價值觀</h4>
            </div>
-           <p className="text-sm md:text-xl font-bold text-slate-700 leading-relaxed md:leading-loose">{ch.contrast.modern[lang]}</p>
+           <p className="text-base md:text-2xl font-bold text-slate-700 leading-relaxed md:leading-loose">{ch.contrast.modern[lang]}</p>
         </div>
       </div>
 
@@ -139,7 +144,7 @@ const App: React.FC = () => {
                {ch.vocab.map((v, i) => (
                  <li key={i} className="flex flex-col border-b border-slate-50 pb-4 last:border-0">
                    <span className="font-black text-lg md:text-3xl text-slate-800 hover:text-emerald-600 transition-colors cursor-default">{v.word}</span>
-                   <span className="text-slate-500 text-xs md:text-base mt-1 md:mt-3 font-medium leading-relaxed">{v.meaning[lang]}</span>
+                   <span className="text-slate-500 text-sm md:text-lg mt-1 md:mt-3 font-medium leading-relaxed">{v.meaning[lang]}</span>
                  </li>
                ))}
              </ul>
@@ -154,7 +159,7 @@ const App: React.FC = () => {
                {ch.grammar.map((g, i) => (
                  <li key={i} className="bg-slate-50 p-4 md:p-8 rounded-xl md:rounded-[2rem] border-l-4 border-indigo-200">
                    <p className="font-black text-slate-800 text-base md:text-2xl mb-2 md:mb-4">{g.point}</p>
-                   <p className="text-slate-500 text-[11px] md:text-lg leading-relaxed font-medium">{g.usage[lang]}</p>
+                   <p className="text-slate-500 text-sm md:text-xl leading-relaxed font-medium">{g.usage[lang]}</p>
                  </li>
                ))}
              </ul>
@@ -166,7 +171,7 @@ const App: React.FC = () => {
       <div className="bg-[#1a1a1a] text-[#f5e6d3] p-8 md:p-20 rounded-[1.5rem] md:rounded-[4rem] shadow-2xl relative overflow-hidden border-b-[8px] md:border-b-[16px] border-[#d4af37]">
          <div className="absolute top-4 right-4 text-6xl md:text-[15rem] opacity-5 font-serif pointer-events-none select-none italic">"</div>
          <h3 className="text-[#d4af37] font-black mb-6 md:mb-10 uppercase text-[10px] md:text-xs tracking-[0.4em]">沉浸式場景閱讀</h3>
-         <p className="text-lg md:text-3xl leading-relaxed md:leading-loose italic opacity-95 font-serif text-pretty">
+         <p className="text-xl md:text-4xl leading-relaxed md:leading-loose italic opacity-95 font-serif text-pretty">
            <span className="text-4xl md:text-7xl font-black text-[#d4af37] float-left mr-3 md:mr-6 leading-none mt-1">「</span>
            {ch.modernEssay[lang]}
          </p>
@@ -176,9 +181,24 @@ const App: React.FC = () => {
       <div className="mt-12 md:mt-24 pt-12 md:pt-24 border-t-4 border-dashed border-slate-200">
         <div className="text-center mb-10 md:mb-16">
           <h3 className="text-xl md:text-4xl font-black text-slate-800 font-serif mb-2">練習與反饋</h3>
-          <p className="text-xs md:text-lg text-slate-400 font-medium px-4">完成下方練習以加深印象。</p>
+          <p className="text-base md:text-xl text-slate-400 font-medium px-4">完成下方練習以加深印象。</p>
         </div>
-        <div className="bg-white rounded-[1.5rem] md:rounded-[3rem] shadow-2xl overflow-hidden border border-slate-100" dangerouslySetInnerHTML={{ __html: FORM_IFRAME }} />
+        <div className="bg-white rounded-[1.5rem] md:rounded-[3rem] shadow-2xl overflow-hidden border border-slate-100" dangerouslySetInnerHTML={{ __html: ch.formIframe || FORM_IFRAME }} />
+      </div>
+    </div>
+  );
+
+  const renderFeedback = () => (
+    <div className="space-y-8 md:space-y-12 animate-in fade-in slide-in-from-bottom-5 duration-500 pb-24 px-1 md:px-0">
+      <div className="bg-[#8b0000] p-6 md:p-16 rounded-[1.5rem] md:rounded-[3rem] shadow-xl border-b-4 md:border-b-8 border-[#d4af37] flex flex-col items-center text-center text-[#f5e6d3] relative">
+        <div className="text-[10px] font-black uppercase tracking-[0.3em] opacity-60 mb-4">{NAV_LABELS.feedback[lang]}</div>
+        <h2 className="text-xl md:text-5xl font-black mb-6 md:mb-10 font-serif leading-snug px-2 text-balance">{NAV_LABELS.feedback[lang]}</h2>
+        <p className="text-base md:text-2xl font-medium opacity-90 leading-relaxed max-w-2xl mx-auto">
+          您的意見是我們前進的動力，歡迎提供任何回饋與建議。
+        </p>
+      </div>
+      <div className="bg-white rounded-[1.5rem] md:rounded-[3rem] shadow-2xl overflow-hidden border border-slate-100">
+        <div dangerouslySetInnerHTML={{ __html: `<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfkzQGlRWhToTNq-vq1nZdhfc_BrqqRCR-3tBeBsMcJF6gMqQ/viewform?embedded=true" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">載入中…</iframe>` }} />
       </div>
     </div>
   );
@@ -191,6 +211,7 @@ const App: React.FC = () => {
       <main ref={mainRef} className="flex-1 w-full p-4 md:p-16 overflow-y-auto h-screen scroll-smooth">
         <div className="max-w-5xl mx-auto">
           {view === 'home' && renderHome()}
+          {view === 'feedback' && renderFeedback()}
           {CHAPTERS.map(ch => view === ch.id ? <div key={ch.id}>{renderChapter(ch)}</div> : null)}
         </div>
       </main>
