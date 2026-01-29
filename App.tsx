@@ -132,7 +132,7 @@ const App: React.FC = () => {
         </div>
       </div>
 
-      {/* 4. 語言學習網格 - 重新排版與字體優化 */}
+      {/* 4. 語言實踐 - 字體調小，排版緊湊 */}
       <div className="space-y-6">
         <div className="flex items-center gap-3 px-1">
           <div className="h-1 w-8 md:w-16 bg-[#d4af37] rounded-full"></div>
@@ -141,27 +141,27 @@ const App: React.FC = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-          {/* 生詞卡 - 緊湊排版 */}
+          {/* 生詞卡 */}
           <div className="bg-white p-5 md:p-10 rounded-xl md:rounded-[2rem] shadow-md border-t-4 md:border-t-[8px] border-emerald-600">
              <h4 className="font-serif font-black text-emerald-800 mb-6 flex items-center gap-2 text-base md:text-2xl">✒️ 常見語彙</h4>
              <ul className="space-y-4">
                {ch.vocab.map((v, i) => (
                  <li key={i} className="flex flex-col border-b border-slate-50 pb-3 last:border-0">
-                   <span className="font-serif font-black text-lg md:text-2xl text-slate-800">{v.word}</span>
-                   <span className="text-slate-500 text-xs md:text-lg mt-0.5 font-serif italic text-justify-zh leading-normal">{v.meaning[lang]}</span>
+                   <span className="font-serif font-black text-lg md:text-xl text-slate-800 leading-tight">{v.word}</span>
+                   <span className="text-slate-500 text-[10px] md:text-base mt-0.5 font-serif italic text-justify-zh leading-tight">{v.meaning[lang]}</span>
                  </li>
                ))}
              </ul>
           </div>
           
-          {/* 語法卡 - 緊湊排版 */}
+          {/* 語法卡 */}
           <div className="bg-white p-5 md:p-10 rounded-xl md:rounded-[2rem] shadow-md border-t-4 md:border-t-[8px] border-indigo-600">
              <h4 className="font-serif font-black text-indigo-800 mb-6 flex items-center gap-2 text-base md:text-2xl">⚙️ 句式應用</h4>
              <ul className="space-y-3">
                {ch.grammar.map((g, i) => (
                  <li key={i} className="bg-slate-50 p-4 md:p-6 rounded-lg md:rounded-xl border-l-4 border-indigo-200">
-                   <p className="font-serif font-black text-slate-800 text-sm md:text-xl mb-1">{g.point}</p>
-                   <p className="text-slate-600 text-[11px] md:text-base font-serif italic text-justify-zh leading-normal">{g.usage[lang]}</p>
+                   <p className="font-serif font-black text-slate-800 text-sm md:text-lg mb-1 leading-tight">{g.point}</p>
+                   <p className="text-slate-600 text-[10px] md:text-sm font-serif italic text-justify-zh leading-tight">{g.usage[lang]}</p>
                  </li>
                ))}
              </ul>
@@ -169,12 +169,12 @@ const App: React.FC = () => {
         </div>
       </div>
 
-      {/* 5. 現代場景閱讀 - 桃花粉 */}
+      {/* 5. 現代場景閱讀 - 加上引號 */}
       <div className="relative p-0.5">
         <div className="bg-[#fff0f5] text-[#8b0000] p-6 md:p-24 rounded-xl md:rounded-[4rem] shadow-xl relative overflow-hidden border-b-[8px] md:border-b-[20px] border-[#ffc0cb]">
            <h3 className="text-[#8b0000] font-black mb-4 uppercase text-[9px] tracking-[0.3em] border-b border-[#8b0000]/10 pb-2 inline-block">沉浸式場景感悟</h3>
            <p className="text-base md:text-4xl leading-relaxed italic font-serif text-justify-zh">
-             {ch.modernEssay[lang]}
+             「{ch.modernEssay[lang]}」
            </p>
         </div>
       </div>

@@ -65,7 +65,7 @@ export const CHAPTERS: ChapterContent[] = [
       en: 'In modern Taiwan, "Zao Sheng Gui Zi" is still common at weddings, but its tone has changed...',
       vn: 'Ở Đài Loan hiện đại, câu nói này vẫn phổ biến nhưng sắc thái đã thay đổi...',
       jp: '現代の台湾でも結婚式でよく使われますが、ニュアンスが変わりました...',
-      kr: '현대 대만에서도 결혼식에서 자주 쓰이지만 뉘앙스가 바뀌었습니다...',
+      kr: '현대 대만에서도結婚式でよく使われますが、ニュアンスが変わりました...',
       'zh-tw': '在現代的台灣婚禮上，長輩們還是會舉杯說「早生貴子」。年輕的小明雖然覺得這有點壓力，但他知道這是一種文化傳承。他笑著回答說：「謝謝，我們順其自然，希望以後的生活一直幸福就好。」這就是現代人處理古典期待的智慧。',
       'zh-cn': '在現代的台灣婚禮上，長輩們還是會舉杯說「早生貴子」。年輕的小明雖然覺得這有點壓力，但他知道這是一種文化傳承。他笑著回答說：「謝謝，我們順其自然，希望以後的生活一直幸福就好。」這就是現代人處理古典期待的智慧。'
     }
@@ -123,7 +123,7 @@ export const CHAPTERS: ChapterContent[] = [
       'zh-tw': '賈寶玉是一個很不傳統的人，他覺得「感情」比「規矩」更重要。這句話雖然簡單，卻包含了華人社會中最難說出口的真話。',
       'zh-cn': '賈寶玉是一個很不傳統的人，他覺得「感情」比「規矩」更重要。這句話雖然簡單，卻包含了華人社會中最難說出口的真話。'
     },
-    videoUrl: "Xf6ANQc6aVM", // Placeholder
+    videoUrl: "EgZKSWjwtok",
     formIframe: `<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfCCO8JcSbwVvfx55ozF-GKHHB2K_mHrdaW2yJWhelQWSw2Mw/viewform?embedded=true" width="100%" height="1823" frameborder="0" marginheight="0" marginwidth="0">載入中…</iframe>`,
     contrast: {
       ancient: { en: 'Duty and social roles define human connections.', vn: 'Nghĩa vụ xác định các mối quan hệ.', jp: '義務と社会的役割が人間関係を定義します。', kr: '의무와 사회적 역할이 인간관계를 정의합니다.', 'zh-tw': '古代：婚姻是利益交換，真心往往被犧牲。', 'zh-cn': '古代：婚姻是利益交換，真心往往被犧牲。' },
@@ -146,8 +146,8 @@ export const CHAPTERS: ChapterContent[] = [
     modernEssay: {
       en: 'Modern lovers still play the "hide and seek" game of emotions, requiring cross-cultural wisdom...',
       vn: 'Những người yêu nhau hiện đại vẫn chơi trò "trốn tìm" cảm xúc...',
-      jp: '現代の恋人たちも感情の「かくれんぼ」をしており、知恵が必要です...',
-      kr: '현대 연인들도 감정의 "숨바꼭질"을 하고 있으며 지혜가 필요합니다...',
+      jp: '現代の恋人たちも感情的「かくれんぼ」をしており、知恵が必要です...',
+      kr: '現代の戀人たちも感情の「かくれんぼ」をしており、知恵が必要です...',
       'zh-tw': '瑪麗抱怨她的台灣男友總是「不明說」心裡的話。她想起寶玉的這句「你心裡到底有沒有我？」。她後來才明白，在東方文化中，直接問出口需要極大的勇氣。搞了半天，原來溫柔的暗示也是一種「真心」的表現。',
       'zh-cn': '瑪麗抱怨她的台灣男友總是「不明說」心裡的話。她想起寶玉的這句「你心裡到底有沒有我？」。她後來才明白，在東方文化中，直接問出口需要極大的勇氣。搞了半天，原來溫柔的暗示也是一種「真心」的表現。'
     }
@@ -164,7 +164,7 @@ export const CHAPTERS: ChapterContent[] = [
       'zh-tw': '賈探春是一個很有管理頭腦的人。在混亂的賈府裡，她堅持「按規矩辦事」，甚至不給親戚面子。這在講究「人情」的環境中非常不容易。',
       'zh-cn': '賈探春是一個很有管理頭腦的人。在混亂的賈府裡，她堅持「按規矩辦事」，甚至不給親戚面子。這在講究「人情」的環境中非常不容易。'
     },
-    videoUrl: "Xf6ANQc6aVM", // Placeholder
+    videoUrl: "VgETj813qd0",
     formIframe: `<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdILM_y4vQICAiiJt8Mvqwo9xIp17TNFe8csKjZg0JBfO7LsA/viewform?embedded=true" width="100%" height="595" frameborder="0" marginheight="0" marginwidth="0">載入中…</iframe>`,
     contrast: {
       ancient: { en: 'Favoritism and human interest drive systems.', vn: 'Ân huệ và quan hệ định hình hệ thống.', jp: '贔屓と人情がシステムを動かします。', kr: '편애와 인정이 시스템을 움직입니다.', 'zh-tw': '古代：關係好的人可以不守規矩，造成組織混亂。', 'zh-cn': '古代：關係好的人可以不守規矩，造成組織混亂。' },
@@ -182,13 +182,13 @@ export const CHAPTERS: ChapterContent[] = [
       { point: '「凡事...都...」', usage: { en: 'Every/All...', vn: 'Mọi việc... đều...', jp: 'すべて…は…', kr: '모든 ...은 ...하다', 'zh-tw': '表示沒有例外的全部。', 'zh-cn': '表示沒有例外的全部。' } },
       { point: '「...得一塌糊塗」', usage: { en: 'A total mess...', vn: '...đến mức rối loạn', jp: 'めちゃくちゃ…', kr: '엉망진창으로...', 'zh-tw': '誇張地形容非常混亂或糟糕的程度。', 'zh-cn': '誇張地形容非常混亂或糟糕的程度。' } },
       { point: '「歸根結底...」', usage: { en: 'In the final analysis...', vn: 'Suy cho cùng...', jp: '結局のところ…', kr: '결국...', 'zh-tw': '用來引出最根本的原因。', 'zh-cn': '用來引出最根本的原因。' } },
-      { point: '「大不了...」', usage: { en: 'At worst...', vn: 'Cùng lắm là...', jp: 'たかが…', kr: '해봤자...', 'zh-tw': '表示面對最壞結果時的豁達態度。', 'zh-cn': '表示面對最壞結果時的豁達態度。' } }
+      { point: '「大不了...」', usage: { en: 'At worst...', vn: 'At worst...', jp: 'たかが…', kr: '해봤자...', 'zh-tw': '表示面對最壞結果時的豁達態度。', 'zh-cn': '表示面對最壞結果時的豁達態度。' } }
     ],
     modernEssay: {
       en: 'Modern managers in Asian firms balance "law" and "love", echoing Tanchun\'s reform spirit...',
       vn: 'Các nhà quản lý hiện đại cân bằng "pháp" và "tình"...',
       jp: '現代のマネージャーは「法」と「情」のバランスをとっています...',
-      kr: '현대 매니저들은 "법"과 "정"의 균형을 맞추고 있습니다...',
+      kr: '現代のマネージャーは「法」と「情」のバランスをとっています...',
       'zh-tw': '在現代的公司管理中，如果制度定得一塌糊塗，員工就不會努力工作。探春的故事告訴我們，凡是成功的組織都必須落實原則。雖然有人會覺得這樣太過鐵面無私，但歸根結底，公平才是職場生存最重要的大事。',
       'zh-cn': '在現代的公司管理中，如果制度定得一塌糊塗，員工就不會努力工作。探春的故事告訴我們，凡是成功的組織都必須落實原則。雖然有人會覺得這樣太過鐵面無私，但歸根結底，公平才是職場生存最重要的大事。'
     }
