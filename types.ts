@@ -7,7 +7,10 @@ export type AppView =
   | 'chapter2' 
   | 'chapter3' 
   | 'chapter4'
-  | 'feedback';
+  | 'chapter5'
+  | 'chapter6'
+  | 'chapter7'
+  | 'chapter8';
 
 export interface MultiLangText {
   en: string;
@@ -33,7 +36,6 @@ export interface ChapterContent {
   title: MultiLangText;
   classicText: string;
   modernExplanation: MultiLangText;
-  videoUrl: string;
   contrast: {
     ancient: MultiLangText;
     modern: MultiLangText;
@@ -41,7 +43,6 @@ export interface ChapterContent {
   vocab: Vocabulary[];
   grammar: Grammar[];
   modernEssay: MultiLangText;
-  formIframe?: string; // 新增章節專屬表單
 }
 
 export interface Scenario {

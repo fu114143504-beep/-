@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { AppView, Language, ChapterContent } from './types';
-import { NAV_LABELS, HOME_CONTENT, CHAPTERS, FORM_IFRAME } from './constants';
+import { NAV_LABELS, HOME_CONTENT, CHAPTERS } from './constants';
 import Navigation from './components/Navigation';
 
 const App: React.FC = () => {
@@ -53,13 +53,6 @@ const App: React.FC = () => {
         </div>
       </div>
 
-      {/* 首頁表單區塊 */}
-      <div className="lattice-container rounded-xl md:rounded-[2rem] shadow-xl mx-0">
-        <div className="bg-white rounded-lg md:rounded-xl overflow-hidden shadow-inner">
-          <div dangerouslySetInnerHTML={{ __html: `<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc75cF3PjWYw3l9JdpU9tsSVWlUkpTxC56dU0ozEwBpbpwQmg/viewform?embedded=true" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0">載入中…</iframe>` }} />
-        </div>
-      </div>
-      
       {/* 章節卡片網格 */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-8 px-0">
         {CHAPTERS.map(ch => (
@@ -97,14 +90,14 @@ const App: React.FC = () => {
             </p>
             <div className="mt-4 flex items-center justify-center gap-2">
               <div className="w-4 h-px bg-[#d4af37]/50"></div>
-              <div className="text-[9px] md:text-sm font-bold uppercase tracking-[0.2em] text-[#d4af37]">摘自《紅樓夢》</div>
+              <div className="text-[9px] md:text-sm font-bold uppercase tracking-[0.2em] text-[#d4af37]">日常委婉語應用</div>
               <div className="w-4 h-px bg-[#d4af37]/50"></div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* 2. 解說與影片 */}
+      {/* 2. 解說 */}
       <div className="lattice-container bg-white rounded-xl md:rounded-[3rem] shadow-xl p-4 md:p-20 space-y-6 md:space-y-12">
         <div className="border-l-[4px] md:border-l-[10px] border-[#8b0000] pl-3 md:pl-16 relative">
           <h4 className="text-[9px] md:text-sm font-black text-[#8b0000]/60 uppercase tracking-[0.3em] mb-2">文化語境深探</h4>
@@ -112,22 +105,16 @@ const App: React.FC = () => {
             {ch.modernExplanation[lang]}
           </p>
         </div>
-        
-        <div className="relative group max-w-full md:max-w-[420px] mx-auto">
-           <div className="relative aspect-[9/16] bg-black rounded-xl md:rounded-[2.8rem] overflow-hidden shadow-2xl border-[6px] md:border-[12px] border-[#f5e6d3]">
-              <iframe className="absolute inset-0 w-full h-full" src={`https://www.youtube.com/embed/${ch.videoUrl}?modestbranding=1&rel=0&controls=1&showinfo=0`} frameBorder="0" allowFullScreen></iframe>
-           </div>
-        </div>
       </div>
 
       {/* 3. 價值觀對比 */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-8">
         <div className="bg-white p-6 md:p-16 rounded-xl border-2 border-[#8b0000]/10 shadow-lg relative overflow-hidden group">
-           <h4 className="text-[#8b0000] font-black uppercase tracking-[0.2em] text-[9px] mb-3 flex items-center gap-2">🏛️ 大觀園：古代規臬</h4>
+           <h4 className="text-[#8b0000] font-black uppercase tracking-[0.2em] text-[9px] mb-3 flex items-center gap-2">🚫 直接表達：容易尷尬</h4>
            <p className="text-base md:text-3xl font-serif font-bold text-slate-700 leading-relaxed text-justify-zh">{ch.contrast.ancient[lang]}</p>
         </div>
         <div className="bg-[#fcf9f2] p-6 md:p-16 rounded-xl border-2 border-[#d4af37]/30 shadow-lg relative overflow-hidden group">
-           <h4 className="text-[#d4af37] font-black uppercase tracking-[0.2em] text-[9px] mb-3 flex items-center gap-2">📱 現代社會：跨文化語境</h4>
+           <h4 className="text-[#d4af37] font-black uppercase tracking-[0.2em] text-[9px] mb-3 flex items-center gap-2">✅ 委婉表達：更有禮貌</h4>
            <p className="text-base md:text-3xl font-serif font-bold text-slate-700 leading-relaxed text-justify-zh">{ch.contrast.modern[lang]}</p>
         </div>
       </div>
@@ -178,32 +165,6 @@ const App: React.FC = () => {
            </p>
         </div>
       </div>
-
-      {/* 6. 表單區塊 */}
-      <div className="mt-8 md:mt-32 pt-8 border-t-2 border-[#d4af37]/20">
-        <div className="text-center mb-6 md:mb-16">
-          <h3 className="text-xl md:text-5xl font-black text-slate-800 font-serif mb-1">章節習題</h3>
-          <p className="text-xs md:text-2xl text-slate-400 font-serif px-2">請完成此回研習之後的練習，驗證您的文化理解。</p>
-        </div>
-        <div className="lattice-container rounded-xl md:rounded-[3rem] shadow-2xl overflow-hidden bg-white/50 p-1 md:p-2">
-           <div className="bg-white rounded-lg md:rounded-[2.5rem] overflow-hidden" 
-                dangerouslySetInnerHTML={{ __html: ch.formIframe || FORM_IFRAME }} />
-        </div>
-      </div>
-    </div>
-  );
-
-  const renderFeedback = () => (
-    <div className="space-y-6 animate-in fade-in slide-in-from-bottom-5 duration-700 pb-32 px-0">
-      <div className="bg-[#8b0000] p-8 md:p-24 rounded-xl md:rounded-[3.5rem] shadow-2xl border-b-[8px] border-[#d4af37] flex flex-col items-center text-center text-[#f5e6d3] relative corner-gold">
-        <h2 className="text-2xl md:text-7xl font-black mb-4 font-serif leading-snug">{NAV_LABELS.feedback[lang]}</h2>
-        <p className="text-base md:text-3xl font-serif opacity-90 italic">「您的隻言片語，皆是寶貴明燈。」</p>
-      </div>
-      <div className="lattice-container rounded-lg overflow-hidden bg-white/50 p-1">
-        <div className="bg-white rounded-lg overflow-hidden">
-          <div dangerouslySetInnerHTML={{ __html: `<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfkzQGlRWhToTNq-vq1nZdhfc_BrqqRCR-3tBeBsMcJF6gMqQ/viewform?embedded=true" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">載入中…</iframe>` }} />
-        </div>
-      </div>
     </div>
   );
 
@@ -215,7 +176,6 @@ const App: React.FC = () => {
       <main ref={mainRef} className="flex-1 w-full p-2 md:p-12 md:pl-16 overflow-y-auto h-screen scroll-smooth">
         <div className="max-w-6xl mx-auto px-1 md:px-0">
           {view === 'home' && renderHome()}
-          {view === 'feedback' && renderFeedback()}
           {CHAPTERS.map(ch => view === ch.id ? <div key={ch.id}>{renderChapter(ch)}</div> : null)}
         </div>
       </main>
