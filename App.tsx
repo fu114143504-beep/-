@@ -67,8 +67,8 @@ const App: React.FC = () => {
           >
              <div className="mb-2 inline-block px-3 py-1 bg-[#8b0000]/5 text-[#8b0000] rounded-full text-[10px] md:text-[9px] font-black uppercase tracking-widest">{NAV_LABELS[ch.id][lang]}</div>
              <h3 className="text-2xl md:text-3xl font-black text-[#8b0000] mb-3 font-serif leading-tight text-balance">{ch.keyword}</h3>
-             <p className="text-sm md:text-xl text-slate-600 line-clamp-2 md:line-clamp-3 leading-relaxed font-serif italic mb-4 md:mb-6 text-justify-zh">
-               {ch.simpleChineseExplanation}
+             <p className="text-sm md:text-xl text-blue-900 line-clamp-2 md:line-clamp-3 leading-relaxed font-serif italic mb-4 md:mb-6 text-justify-zh">
+               {ch.simpleChineseExplanation[lang]}
              </p>
              <div className="flex items-center text-[#8b0000] font-black text-[10px] md:text-[9px] uppercase tracking-[0.2em]">
                <span>開始練習</span>
@@ -90,7 +90,7 @@ const App: React.FC = () => {
           
           <div className="w-full bg-[#fdfbf7]/10 backdrop-blur-md p-6 md:p-16 rounded-lg md:rounded-[3rem] border-2 border-dashed border-[#d4af37]/50 shadow-inner">
             <p className="text-xl md:text-5xl font-serif font-black leading-relaxed italic text-balance text-[#f5e6d3]">
-              {ch.classicText}
+              {ch.classicText[lang]}
             </p>
           </div>
         </div>
@@ -101,7 +101,7 @@ const App: React.FC = () => {
         <div className="border-l-[6px] md:border-l-[10px] border-[#8b0000] pl-6 md:pl-16 relative">
           <h4 className="text-[10px] md:text-sm font-black text-[#8b0000]/60 uppercase tracking-[0.3em] mb-3">簡單中文解釋</h4>
           <p className="text-lg md:text-4xl text-slate-800 leading-snug font-serif font-black text-justify-zh">
-            {ch.simpleChineseExplanation}
+            {ch.simpleChineseExplanation[lang]}
           </p>
         </div>
       </div>
@@ -125,7 +125,7 @@ const App: React.FC = () => {
                 <div className="absolute top-4 left-4 text-[#8b0000]/20 text-4xl md:text-6xl font-serif">“</div>
                 <h4 className="text-[#8b0000] font-black text-xs md:text-sm uppercase tracking-widest mb-6">情境 (Scenario)</h4>
                 <p className="text-xl md:text-4xl font-serif font-black text-slate-800 leading-relaxed">
-                  {ch.practiceCards[activeCardIndex].scenario}
+                  {ch.practiceCards[activeCardIndex].scenario[lang]}
                 </p>
                 <div className="mt-8 text-[#8b0000] font-black text-[10px] md:text-xs animate-pulse">點擊翻面查看答案 →</div>
               </div>
@@ -134,11 +134,11 @@ const App: React.FC = () => {
               <div className="absolute inset-0 backface-hidden rotate-y-180 bg-[#8b0000] rounded-3xl shadow-2xl border-4 border-[#d4af37] p-8 md:p-12 flex flex-col items-center justify-center text-center text-[#f5e6d3]">
                 <h4 className="text-[#d4af37] font-black text-xs md:text-sm uppercase tracking-widest mb-4">委婉說法 (Euphemism)</h4>
                 <p className="text-2xl md:text-5xl font-serif font-black mb-6 leading-tight">
-                  {ch.practiceCards[activeCardIndex].answer}
+                  {ch.practiceCards[activeCardIndex].answer[lang]}
                 </p>
                 <div className="h-px w-16 bg-[#d4af37]/50 mb-6"></div>
                 <p className="text-sm md:text-2xl font-serif opacity-90 leading-relaxed">
-                  {ch.practiceCards[activeCardIndex].explanation}
+                  {ch.practiceCards[activeCardIndex].explanation[lang]}
                 </p>
                 <div className="mt-8 text-[#d4af37] font-black text-[10px] md:text-xs">點擊翻回情境 ←</div>
               </div>
@@ -185,8 +185,8 @@ const App: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
           {ch.practiceCards.map((p, i) => (
             <div key={i} className="bg-white p-6 md:p-10 rounded-xl md:rounded-[2rem] shadow-md border-l-8 border-[#8b0000]">
-               <p className="font-serif font-black text-slate-800 text-lg md:text-3xl mb-2 leading-tight">「{p.answer}」</p>
-               <p className="text-slate-500 text-xs md:text-xl font-serif italic text-justify-zh leading-tight">{p.scenario}</p>
+               <p className="font-serif font-black text-slate-800 text-lg md:text-3xl mb-2 leading-tight">「{p.answer[lang]}」</p>
+               <p className="text-blue-900 text-xs md:text-xl font-serif italic text-justify-zh leading-tight">{p.scenario[lang]}</p>
             </div>
           ))}
         </div>

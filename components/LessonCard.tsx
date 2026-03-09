@@ -33,12 +33,12 @@ const LessonCard: React.FC<LessonCardProps> = ({ scenario, lang }) => {
           
           <div className="bg-[#fdfbf7] p-4 rounded-lg mb-6 border-l-4 border-[#d4af37]">
             <p className="text-xs text-slate-500 uppercase font-bold mb-2 tracking-tighter">Classic Context (紅樓背景)</p>
-            <p className="text-sm text-slate-700 leading-relaxed italic">"{scenario.bookContext}"</p>
+            <p className="text-sm text-blue-900 leading-relaxed italic">"{scenario.bookContext}"</p>
           </div>
 
           <div className="mt-auto text-center">
             <p className="text-3xl font-serif font-black text-[#8b0000] mb-2">{scenario.phrase}</p>
-            <p className="text-sm text-slate-400 mb-6 italic">"{scenario.literalMeaning}"</p>
+            <p className="text-sm text-blue-900 mb-6 italic">"{scenario.literalMeaning}"</p>
             <button className="text-[#8b0000] text-xs font-bold border border-[#8b0000] px-6 py-2 rounded-full hover:bg-[#8b0000] hover:text-white transition-all">
               {lang === 'vn' ? 'Giải mã chiến lược' : isChinese ? '查看語境策略' : 'Decode Strategy'}
             </button>
@@ -68,7 +68,7 @@ const LessonCard: React.FC<LessonCardProps> = ({ scenario, lang }) => {
             <div className="bg-black/20 p-4 rounded-xl text-xs space-y-3">
               <p><span className="text-[#d4af37] font-bold">A:</span> {scenario.exampleDialog.speakerA}</p>
               <p><span className="text-slate-400 font-bold">B:</span> {scenario.exampleDialog.speakerB}</p>
-              <p className="text-[10px] italic text-slate-500 pt-2 border-t border-white/5">{scenario.exampleDialog.explanation[lang]}</p>
+              <p className="text-[10px] italic text-blue-900 pt-2 border-t border-white/5">{scenario.exampleDialog.explanation[lang]}</p>
             </div>
           </div>
         </div>

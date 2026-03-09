@@ -32,18 +32,18 @@ export interface Grammar {
 }
 
 export interface PracticeCard {
-  scenario: string;
-  answer: string;
-  explanation: string;
+  scenario: MultiLangText;
+  answer: MultiLangText;
+  explanation: MultiLangText;
 }
 
 export interface ChapterContent {
   id: AppView;
   title: MultiLangText;
   keyword: string;
-  classicText: string;
+  classicText: MultiLangText;
   modernExplanation: MultiLangText;
-  simpleChineseExplanation: string;
+  simpleChineseExplanation: MultiLangText;
   contrast: {
     ancient: MultiLangText;
     modern: MultiLangText;
