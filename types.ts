@@ -31,11 +31,19 @@ export interface Grammar {
   usage: MultiLangText;
 }
 
+export interface PracticeCard {
+  scenario: string;
+  answer: string;
+  explanation: string;
+}
+
 export interface ChapterContent {
   id: AppView;
   title: MultiLangText;
+  keyword: string;
   classicText: string;
   modernExplanation: MultiLangText;
+  simpleChineseExplanation: string;
   contrast: {
     ancient: MultiLangText;
     modern: MultiLangText;
@@ -43,6 +51,7 @@ export interface ChapterContent {
   vocab: Vocabulary[];
   grammar: Grammar[];
   modernEssay: MultiLangText;
+  practiceCards: PracticeCard[];
 }
 
 export interface Scenario {
